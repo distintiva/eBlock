@@ -1,0 +1,87 @@
+<menu>
+	<subMenu name="File" label="File">
+		<item name="New" label="新建项目" keyEquivalent="N" />
+		<item isSeparator="true" />
+		<item name="Load Project" label="打开项目" keyEquivalent="o" />
+		<item name="Save Project" label="保存项目" keyEquivalent="s" />
+		<item name="Save Project As" label="另存项目" keyEquivalent="S" />
+		<item isSeparator="true" />
+	    <item name="Save blocks as PNG image ..." action="save_blocks" keyEquivalent="e" />
+		<item isSeparator="true" />
+		<item name="Import Image" label="导入图片" />
+		<item name="Export Image" label="导入图片" />
+		<item isSeparator="true" />
+		<item name="Undo Revert" label="取消转换" keyEquivalent="" />
+		<item name="Revert" label="转换" keyEquivalent="" />
+	</subMenu>
+	<subMenu name="Edit" label="编辑">
+		<item name="Undelete" label="Undelete" />
+		<item isSeparator="true" />
+		<item name="View and Upload Code" label="Arduino模式" keyEquivalent="u"  action="arduino_mode"/>
+		<item name="Hide stage layout" label="隐藏舞台" keyEquivalent="" />
+		<item name="Small stage layout" label="小舞台布局模式" keyEquivalent="" />
+		<item name="Turbo mode" label="加速模式" keyEquivalent="" />
+		
+	</subMenu>
+	<subMenu name="Connect" label="Connect">
+		<subMenu name="Serial Port" label="Serial Port" >
+		</subMenu>
+		<subMenu name="Bluetooth" label="Bluetooth" >
+			<item name="Discover" label="Discover" action="discover_bt" />
+			<item isSeparator="true" />
+			<item name="Clear Bluetooth" label="Clear Bluetooth" action="clear_bt" />
+		</subMenu>
+		<subMenu name="2.4G Serial" label="2.4G无线串口" keyEquivalent="" >
+			<item name="Connect" label="Connect" action="connect_hid" />
+		</subMenu>
+			
+
+	</subMenu>
+	<subMenu name="Device" action="" >
+		<item name="Open Help ..."  action="open_help" />
+		<subMenu name="Upgrade Firmware"  action="upgrade_firmware" >
+			<item name="xxx" label="xxx" />
+		</subMenu>
+		<item name="Install Driver"  action="driver" />
+		<item name="Get more devices from web..."  action="download_boards" />
+		<item isSeparator="true" />
+		<item name="Select Device" enabled="false"  />
+		
+	
+		
+	</subMenu>
+	<subMenu name="Extensions" label="Extensions">
+		<item name="Reload Extensions from disk" label="Reload Extensions from disk" />
+		<item name="Get more extensions from web..." action="download_extensions" />
+		<item isSeparator="true" />
+	</subMenu>
+	<subMenu name="Language" label="语言">
+		<item isSeparator="true" />
+		<subMenu name="set font size" label="设置字体大小" >
+			<item name="setFontSize" label="10" />
+			<item name="setFontSize" label="11" />
+			<item name="setFontSize" label="12" />
+			<item name="setFontSize" label="13" />
+			<item name="setFontSize" label="14" />
+			<item name="setFontSize" label="15" />
+			<item name="setFontSize" label="16" />
+		</subMenu>
+	</subMenu>
+	<subMenu name="eBlock" label="">
+		<item name="Check For Updates"  action="check_app_update" />
+		<item isSeparator="true" />
+		<item name="Open Resources folder" action="open_resources" />
+		<item name="Open Extensions folder" action="open_extensions"  />
+		<item name="Open Selected device folder" action="open_device"/>
+		<item isSeparator="true" />
+		<item name="Download Devices" />
+		<item name="Download Extensions" />
+		<item isSeparator="true" />
+		<item name="Online documentation"/>
+		<item name="How to extend eBlock"/>
+		<item isSeparator="true" />
+		<item name="The eBlock project"/>
+		
+		
+	</subMenu>
+</menu>
