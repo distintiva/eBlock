@@ -18,7 +18,7 @@ This repo has been recently created and the app still is in **beta version** so 
 Please be patient, because behing this app there is a lot of work (app, new libraries, new extensions ...) 
 
 ## Features
-- <details><summary><b>Show instructions</b></summary>
+<details><summary><b>Unbranded</b></summary>
 This means that you can customize eBlock to show any devices you want, all avaliable or only your custom robots
 </details>
 - New design and more confortable colors
