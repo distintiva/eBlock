@@ -3,9 +3,9 @@ eBlock is an application that allows you code all kinds of devices, is a enhance
 
 <p align="center">
 	<strong>
-		<a href="./#features">Features</a>
+		<a href="#features">Features</a>
 		•
-		<a href="./#installation">Installation</a>
+		<a href="#installation">Installation</a>
 	</strong>
 </p>
 
