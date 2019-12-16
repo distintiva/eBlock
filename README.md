@@ -1,6 +1,6 @@
 <h1 align="center"> <img src="img/eblock_logo.png"></h1>
 eBlock is an application that allows you code all kinds of devices, is a enhanced versión of <a href="https://github.com/Makeblock-official/mBlock" target="_blank">mBlock 3.4.5/Scratch</a>
-<hr/>
+<h1>&nbsp;</h1>
 <p align="center">
 	<strong>
 		<a href="#features">Features</a>
@@ -8,7 +8,7 @@ eBlock is an application that allows you code all kinds of devices, is a enhance
 		<a href="#installation">Installation</a>
 	</strong>
 </p>
-<hr/>
+<h1>&nbsp;</h1>
 
 ![eblock](eblock.png)
 
@@ -17,6 +17,7 @@ eBlock is an application that allows you code all kinds of devices, is a enhance
 This repo has been recently created and the app still is in **beta version** so we need to upload more documentation.
 
 Please be patient, because behing this app there is a lot of work (app, new libraries, new extensions ...) 
+
 
 ## Features
 <details><summary><b>Unbranded</b></summary>
@@ -69,19 +70,18 @@ Lists can be also Strings
 </details>
 
 
-### Comming Features
-- 64bit MacOS version
-- Linux version
-- New extensions
+## Comming Features
 
-You can get more information or [download a release build at the mBlock website](http://www.mblock.cc)
+- [ ] 64bit MacOS version
+- [ ] Linux version
+- [ ] New extensions
+- [ ] Add more devices and extensions
 
+
+### Installation
+Go to releases section 
 
 
 ### License
 CC BY-NC-SA 4.0
-
-
-### Installer
-Go to releases section 
 
