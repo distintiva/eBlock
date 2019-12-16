@@ -1,14 +1,16 @@
-![eblock logo](eblock.png)
+<h1 align="center"> <img src="img/eblock_logo.png"></h1>
+eBlock is an application that allows you code all kinds of devices, is a enhanced versión of [mBlock 3.4.5/Scratch](https://github.com/Makeblock-official/mBlock)
 
-# eBlock
-eBlock is the enhanced versión of great Scratch version [mBlock 3.4.5](https://github.com/Makeblock-official/mBlock), is opensource and non commercial.  
+<div align="center"><a href="#features">Features</a> | <a href="Installation">Installation</a></div>
+<p align="center">
+	<strong>
+		<a href="./#Features">Features</a>
+		•
+		<a href="./#Installation">Installation</a>
+	</strong>
+</p>
 
-# Why eBlock
-There a lot of people that preffers to code in c/c++ and not in Python so we'll keep supporting this versión to be able to code every kind of boards, not only Arduino ones.
-
-
-
-
+![eblock](eblock.png)
 
 
 ### Note!!
