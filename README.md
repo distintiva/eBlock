@@ -1,6 +1,6 @@
 <h1 align="center"> <img src="img/eblock_logo.png"></h1>
-eBlock is an application that allows you code all kinds of devices, is a enhanced versión of [mBlock 3.4.5/Scratch](https://github.com/Makeblock-official/mBlock)
-
+eBlock is an application that allows you code all kinds of devices, is a enhanced versión of <a href="https://github.com/Makeblock-official/mBlock" target="_blank">mBlock 3.4.5/Scratch</a>
+<hr/>
 <p align="center">
 	<strong>
 		<a href="#features">Features</a>
@@ -8,6 +8,7 @@ eBlock is an application that allows you code all kinds of devices, is a enhance
 		<a href="#installation">Installation</a>
 	</strong>
 </p>
+<hr/>
 
 ![eblock](eblock.png)
 
