@@ -8,7 +8,6 @@ eBlock is an application that allows you code all kinds of devices, is a enhance
 		<a href="#installation">Installation</a>
 	</strong>
 </p>
-<h1>&nbsp;</h1>
 
 ![eblock](eblock.png)
 
