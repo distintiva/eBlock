@@ -1,9 +1,14 @@
-# eBlock
-eBlock is the enhanced versión of [mBlock 3.4.5](https://github.com/Makeblock-official/mBlock), opensource and non commercial.  
-We'll be supporting and improving this versión every day.
-
-
 ![eblock logo](eblock.png)
+
+# eBlock
+eBlock is the enhanced versión of great Scratch version [mBlock 3.4.5](https://github.com/Makeblock-official/mBlock), is opensource and non commercial.  
+
+# Why eBlock
+There a lot of people that preffers to code in c/c++ and not in Python so we'll keep supporting this versión to be able to code every kind of boards, not only Arduino ones.
+
+
+
+
 
 
 ### Note!!
