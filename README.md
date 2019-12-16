@@ -1,3 +1,6 @@
+# eBlock ![logo](img/eblock_logo.png)
+
+
 ![eblock logo](eblock.png)
 
 # eBlock
