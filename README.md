@@ -48,7 +48,21 @@ This means that you can customize eBlock to show any devices you want, all avali
 </details>
 
 <details><summary><b>Portable</b></summary>
-All the application files in the same application directory that allows you to customize eBlock in the easy way
+
+```text
+eBlock/
+├── media/
+├── resources/    
+|      ├── arduino/
+|      ├── devices/
+|      ├── drivers/
+|      ├── extensions/
+|      └── locale.xlsx
+|
+└───eBlock.exe
+
+```
+
 </details>
 
 <details><summary><b>New design and more confortable colors</b></summary>
