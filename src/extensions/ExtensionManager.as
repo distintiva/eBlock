@@ -157,7 +157,7 @@ public class ExtensionManager {
 			callBackName += "_"+ arg.argValue;
 		}
 		
-		callBackName=callBackName.replace(" ", "_");
+		callBackName=callBackName.replace(" ", "_").replace("=", "eq").replace(">", "gt").replace("<", "lt").replace("-", "_").replace("/", "_");
 		
 		//- busco si coincide el ID del callback que se ejecuta actualmente con el el nombre del callback registrado en la extension ( seccion callbacks:{})
 		for each (var ext:ScratchExtension in extensionDict) {

@@ -106,6 +106,8 @@
 <command category="4" type=" " opcode="penSize:" spec="set pen size to %n">[1]</command>
 <command/>
 <command category="104" type=" " opcode="clearPenTrails" spec="clear"/>
+
+
 <command category="5" type="h" opcode="whenGreenFlag" spec="when @greenFlag clicked"/>
 <command category="5" type="h" opcode="whenKeyPressed" spec="when %m.key key pressed">["space"]</command>
 <command category="5" type="h" opcode="whenKeyReleased" spec="when %m.key key released">["space"]</command>
@@ -117,6 +119,9 @@
 <command category="5" type="h" opcode="whenIReceive" spec="when I receive %m.broadcast">[""]</command>
 <command category="5" type=" " opcode="broadcast:" spec="broadcast %m.broadcast">[""]</command>
 <command category="5" type=" " opcode="doBroadcastAndWait" spec="broadcast %m.broadcast and wait">[""]</command>
+
+
+
 <command category="6" type=" " opcode="wait:elapsed:from:" spec="wait %n secs">[1]</command>
 <command/>
 <command category="6" type="c" opcode="doRepeat" spec="repeat %n">[10]</command>

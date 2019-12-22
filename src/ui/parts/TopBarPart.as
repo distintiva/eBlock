@@ -67,10 +67,12 @@ package ui.parts {
 		
 		private var toolOnMouseDown:String;
 	
-		private var xLabel:TextField;
+		//private var xLabel:TextField;
+		
+		private var connectMenu:IconButton;
 		
 		private var boardLabelMenu:IconButton;
-		private var labelBoardText:TextField;
+		//private var labelBoardText:TextField;
 		
 		private var indicator:IndicatorLight ;
 		
@@ -149,6 +151,11 @@ package ui.parts {
 			updateIndicator(false);
 			toolStart+=indicator.width+2;
 			
+			
+			connectMenu.x = toolStart;
+			connectMenu.y=5;
+			toolStart+=connectMenu.width+10;
+			
 			boardLabelMenu.x = toolStart;
 			toolStart+=boardLabelMenu.width+5;
 			boardLabelMenu.y=5;
@@ -178,8 +185,14 @@ package ui.parts {
 		public function updateIndicator( onoff:Boolean ):void{
 			if(onoff==true){
 				indicator.setColorAndMsg(/*0xA4C188*/0xBCEB30, Translator.map('Connected'));
+				
+				connectMenu.setLabel(Translator.map('Connected'),  CSS.panelColor,CSS.enfasisColor, true);
+				
 			}else{
 				indicator.setColorAndMsg(0xF2F2F2, Translator.map('Disconnected'));
+				
+				connectMenu.setLabel(Translator.map('Disconnected'),  CSS.panelColor,CSS.enfasisColor, true);
+				connectMenu.setLabelOnly(Translator.map('Disconnected') );
 			}
 		}
 		
@@ -214,7 +227,17 @@ package ui.parts {
 				}
 			}
 			
-		
+		    
+			function connectContextMenu(ignore:*):void {
+				//updateIndicator(true);
+				var conn:NativeMenu = eBlock.app.systemMenu.getMenuConnect();
+				conn.display(eBlock.app.stage, connectMenu.x, connectMenu.y+connectMenu.height);
+			}
+			
+			connectMenu =  UIPart.makeMenuButton( Translator.map("Disconnected"), connectContextMenu, true, CSS.panelColor);
+			connectMenu.useHandCursor = true;
+			connectMenu.buttonMode = true;
+			addChild(connectMenu);
 			
 			function devicesContextMenu(ignore:*):void {
 				//updateIndicator(true);
@@ -228,6 +251,9 @@ package ui.parts {
 			addChild(boardLabelMenu);
 			
 			
+			
+			
+			
 			function helpIcon_click(ignore:*):void {
 				DeviceManager.sharedManager().openHelp()
 			}
@@ -235,22 +261,22 @@ package ui.parts {
 			helpIcon = new IconButton( helpIcon_click , 'extensionHelp');
 			addChild(helpIcon);
 			
-			boardLabelMenu.addEventListener(MouseEvent.CLICK, function(e:Event):void {
+			/*boardLabelMenu.addEventListener(MouseEvent.CLICK, function(e:Event):void {
 				
-			}, false, 0, true);
+			}, false, 0, true);*/
 			
 			
 			//xLabel = makeLabel('Board:', CSS.boardFormat);
 			//addChild(xLabel);
 			
 			indicator= new IndicatorLight(null);
-			indicator.addEventListener ( MouseEvent.CLICK, function(e:Event):void {
+			/*indicator.addEventListener ( MouseEvent.CLICK, function(e:Event):void {
 				//updateIndicator(true);
 				var conn:NativeMenu = eBlock.app.systemMenu.getMenuConnect();
 				
 				conn.display(eBlock.app.stage, indicator.x+6, indicator.y+6);
 				
-			});
+			});*/
 			
 			
 			addChild(indicator);

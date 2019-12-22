@@ -83,6 +83,8 @@ package cc.customcode.uibot.ui.parts
 			//register("Set FirmWare Mode", __onResetDefaultProgram);
 			
 			
+			
+			
 			createHelpDialog();
 						 
 		}
@@ -449,8 +451,8 @@ package cc.customcode.uibot.ui.parts
 		public function openHelpDialog(title:String, path:String):void{
 			
 			//var readme:URLRequest = new URLRequest(".../bbc_microbit/info.html")
-			path = path+"/help/";	
-			var boardInfo:File = File.applicationDirectory.resolvePath(path + "readme.md");
+			path = path+"/";	
+			var boardInfo:File = File.applicationDirectory.resolvePath(path + "README.md");
 			
 			if(!boardInfo.exists) return;
 			//var boardObj:Object = util.JSON.parse(FileUtil.ReadString(boardInfo));
@@ -660,10 +662,14 @@ package cc.customcode.uibot.ui.parts
 				//eBlock.app.extensionManager.copyLocalFiles();
 				SharedObjectManager.sharedManager().setObject("first-launch",false);
 			}*/
+			
+			var loadExtensions:Boolean = true; 
+			
 			if(initExtMenuItemCount < 0){
 				initExtMenuItemCount = menuItem.numItems;
 			}else{
-				return;
+				loadExtensions = false;
+				//return;
 			}
 			
 			/*while(menuItem.numItems > initExtMenuItemCount){
@@ -672,16 +678,24 @@ package cc.customcode.uibot.ui.parts
 			
 			list = eBlock.app.extensionManager.extensionList;
 //			var subMenu:NativeMenu = menuItem;
+			
 			for(var i:int=0;i<list.length;i++){
 				var extName:String = list[i].extensionName;
 				
 				if(ExtensionManager.isBoardExt(extName) ) continue;
 				
-				var subMenuItem:NativeMenuItem = menuItem.addItem(new NativeMenuItem(Translator.map(extName)));
-				subMenuItem.name = extName;
-				subMenuItem.label = extName;
+				var subMenuItem:NativeMenuItem ;
+				if(loadExtensions){
+				     subMenuItem = menuItem.addItem(new NativeMenuItem(Translator.map(extName)));
+					subMenuItem.name = extName;
+					subMenuItem.label = extName;
+					register(extName, __onExtensions);
+				}else{
+					subMenuItem = menuItem.getItemByName(extName);
+				
+				}
 				subMenuItem.checked = eBlock.app.extensionManager.checkExtensionSelected(extName);
-				register(extName, __onExtensions);
+				
 			}
 		}
 		

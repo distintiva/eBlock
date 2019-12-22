@@ -98,6 +98,9 @@ package extensions
 			}
 		}
 		public function loadJS(path:String):void{
+			
+			var dev:SerialDevice = SerialDevice.sharedDevice();
+			
 			var html:String = "var ScratchExtensions = {};" +
 				"ScratchExtensions.register = function(name,desc,ext,param){" +
 				"	try{			" +
@@ -119,6 +122,12 @@ package extensions
 			_htmlLoader.window.string2array = string2array;
 			_htmlLoader.window.array2string = array2string;
 			_htmlLoader.window.responseValue = responseValue;
+
+			_htmlLoader.window.processDataMProtocol = processDataMProtocol;
+			_htmlLoader.window.runPackage =  dev.runPackage;
+			_htmlLoader.window.getPackage = dev.getPackage;
+			
+			
 			_htmlLoader.window.trace = trace;
 			_htmlLoader.window.interruptThread = interruptThread;
 			_htmlLoader.window.air = {"trace":trace};
@@ -126,11 +135,136 @@ package extensions
 			ConnectionManager.sharedManager().addEventListener(Event.REMOVED,onRemoved);
 			ConnectionManager.sharedManager().addEventListener(Event.CLOSE,onClosed);
 		}
+		
+		
+		
+		
+		
+		//-------------- From extension.js to allow smaller extensions code
+		
+				
+		
+		
+		private var _rxBuf:Array = [];
+		//private var inputArray:Array = [];
+		private var _isParseStart:Boolean = false;
+		private var _isParseStartIndex:int = 0;
+		private var responsePreprocessor:Object = {};
+		//- process data for protocol created by Makeblock 
+		private function processDataMProtocol(bytes:Array):void {
+			var len:int = bytes.length;
+			if(_rxBuf.length>30){
+				_rxBuf = [];
+			}
+			for(var index:int=0;index<bytes.length;index++){
+				var c:int= bytes[index];  // int está bien para char ???????????
+				_rxBuf.push(c);
+				if(_rxBuf.length>=2){
+					if(_rxBuf[_rxBuf.length-1]==0x55 && _rxBuf[_rxBuf.length-2]==0xff){
+						_isParseStart = true;
+						_isParseStartIndex = _rxBuf.length-2;
+					}
+					if(_rxBuf[_rxBuf.length-1]==0xa && _rxBuf[_rxBuf.length-2]==0xd&&_isParseStart){
+						_isParseStart = false;
+						
+						var position:int = _isParseStartIndex+2;
+						var extId:int = _rxBuf[position];
+						position++;
+						var type:int = _rxBuf[position];
+						position++;
+						//1 byte 2 float 3 short 4 len+string 5 double
+						var value:*;
+						switch(type){
+							case 1:{
+								value = _rxBuf[position];
+								position++;
+							}
+								break;
+							case 2:{
+								value = readFloatFromBuff(_rxBuf,position);
+								position+=4;
+							}
+								break;
+							case 3:{
+								value = readIntFromBuff(_rxBuf,position,2);
+								position+=2;
+							}
+								break;
+							case 4:{
+								var l:int = _rxBuf[position];
+								position++;
+								value = readStringFromBuff(_rxBuf,position,l);
+							}
+								break;
+							case 5:{
+								value = readDoubleFromBuff(_rxBuf,position);
+								position+=4;
+							}
+								break;
+							case 6:
+								value = readIntFromBuff(_rxBuf,position,4);
+								position+=4;
+								break;
+						}
+						if(type<=6){
+							if (responsePreprocessor[extId] && responsePreprocessor[extId] != null) {
+								value = responsePreprocessor[extId](value);
+								responsePreprocessor[extId] = null;
+							}
+							/*
+							 *antes de hacer un  responseValue deberíamos pasar el value a SerialDevice
+							*/
+							
+								responseValue(extId,value);
+							
+						}else{
+							responseValue();
+						}
+						_rxBuf = [];
+					}
+				} 
+			}
+		}
+		
+			
+		
+		
+		
+		
+		
+		private function readFloatFromBuff(arr,position):Number{
+			var f:Array= [arr[position],arr[position+1],arr[position+2],arr[position+3]];
+			return  readFloat(f);//parseFloat(f);
+		}
+		private function readIntFromBuff(arr,position,count):int{
+			var result:int = 0;
+			for(var i:int=0; i<count; ++i){
+				result |= arr[position+i] << (i << 3);
+			}
+			return result;
+		}
+		private function readDoubleFromBuff(arr,position):Number{
+			return readFloatFromBuff(arr,position);
+		}
+		private function readStringFromBuff(arr,position,len):String{
+			var value:String = "";
+			for(var ii:int=0;ii<len;ii++){
+				value += String.fromCharCode(_rxBuf[ii+position]);
+			}
+			return value;
+		}
+		
+		
+		
 		private function responseValue(...args):void{
-			if(args.length < 2){
+			if(args.length == 0){ //if(args.length < 2){
 				RemoteCallMgr.Instance.onPacketRecv();
-			}else if(args[0] == 0x80){
-				eBlock.app.runtime.mbotButtonPressed.notify(Boolean(args[1]));
+			}else if(args.length == 1){
+				if(args[0] == 0x80){
+					eBlock.app.runtime.mbotButtonPressed.notify(Boolean(args[1]));
+				}else{
+					RemoteCallMgr.Instance.onPacketRecv(args[0]);
+				}
 			}else{
 				RemoteCallMgr.Instance.onPacketRecv(args[1]);
 			}

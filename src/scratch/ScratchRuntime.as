@@ -93,11 +93,11 @@ package scratch {
 		public const deviceEventReceived:Signal = new Signal(int, int);
 		
 		
-		public const voiceReceived:Signal = new Signal(Boolean);
-		public const emotionResultReceived:Signal = new Signal(Boolean);
-		public const faceResultReceived:Signal = new Signal(Boolean);
-		public const textResultReceived:Signal = new Signal(Boolean);
-		public const realFaceResultReceived:Signal = new Signal(Boolean);
+		//public const voiceReceived:Signal = new Signal(Boolean);
+	//	public const emotionResultReceived:Signal = new Signal(Boolean);
+		//public const faceResultReceived:Signal = new Signal(Boolean);
+		//public const textResultReceived:Signal = new Signal(Boolean);
+		//public const realFaceResultReceived:Signal = new Signal(Boolean);
 	
 		public function ScratchRuntime(app:eBlock, interp:Interpreter) {
 			this.app = app;
@@ -105,11 +105,11 @@ package scratch {
 			timerBase = interp.currentMSecs;
 			clearKeyDownArray();
 			mbotButtonPressed.add(__onMbotButtonPressed);
-			voiceReceived.add(__onVoiceReceived);
-			emotionResultReceived.add(__onEmotionResultReceived);
-			faceResultReceived.add(__onFaceResultReceived);
-			textResultReceived.add(__onTextResultReceived);
-			realFaceResultReceived.add(__onRealFaceResultReceived);
+			//voiceReceived.add(__onVoiceReceived);
+			//emotionResultReceived.add(__onEmotionResultReceived);
+			//faceResultReceived.add(__onFaceResultReceived);
+			//textResultReceived.add(__onTextResultReceived);
+			//realFaceResultReceived.add(__onRealFaceResultReceived);
 			
 			deviceEventReceived.add( __onDeviceEvent);
 		}
@@ -146,7 +146,7 @@ package scratch {
 			});
 		}
 		
-		private function __onVoiceReceived(isReceived:Boolean):void{
+		/*private function __onVoiceReceived(isReceived:Boolean):void{
 			allStacksAndOwnersDo(function(stack:Block, target:ScratchObj):void{
 				if(stack.op.indexOf("whenVoiceCommandReceived")==-1){
 					return;
@@ -157,8 +157,8 @@ package scratch {
 					}
 				}
 			});
-		}
-		private function __onEmotionResultReceived(isReceived:Boolean):void{
+		}*/
+		/*private function __onEmotionResultReceived(isReceived:Boolean):void{
 			allStacksAndOwnersDo(function(stack:Block, target:ScratchObj):void{
 				if(stack.op.indexOf("whenPhotoResultReceived")==-1){
 					return;
@@ -187,8 +187,8 @@ package scratch {
 					}
 				}
 			});
-		}
-		private function __onTextResultReceived(isReceived:Boolean):void{
+		}*/
+		/*private function __onTextResultReceived(isReceived:Boolean):void{
 			allStacksAndOwnersDo(function(stack:Block, target:ScratchObj):void{
 				if(stack.op.indexOf("whenPhotoResultReceived")==-1){
 					return;
@@ -202,8 +202,8 @@ package scratch {
 					}
 				}
 			});
-		}
-		private function __onRealFaceResultReceived(isReceived:Boolean):void{
+		}*/
+		/*private function __onRealFaceResultReceived(isReceived:Boolean):void{
 			allStacksAndOwnersDo(function(stack:Block, target:ScratchObj):void{
 				if(stack.op.indexOf("whenRealFaceResultReceived")==-1){
 					return;
@@ -214,7 +214,7 @@ package scratch {
 					}
 				}
 			});
-		}
+		}*/
 		// -----------------------------
 		// Running and stopping
 		//------------------------------
@@ -317,7 +317,7 @@ package scratch {
 	
 		public function startGreenFlags(firstTime:Boolean = false):void {
 			function startIfGreenFlag(stack:Block, target:ScratchObj):void {
-				if (stack.op == 'whenGreenFlag' && !BlockInterpreter.Instance.isRunning(stack, target)) {
+				if (  (stack.op == 'whenGreenFlag'   || stack.op == 'doForeverHat' )    && !BlockInterpreter.Instance.isRunning(stack, target)) {
 					interp.toggleThread(stack, target);
 				}
 			}

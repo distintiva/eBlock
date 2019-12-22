@@ -18,6 +18,7 @@ package interpreter
 			primTable["whenSceneStarts"]	= doNothing;
 			primTable["wait:elapsed:from:"]	= doWait;
 			primTable["doForever"]			= doForever;
+			primTable["doForeverHat"]			= doNothing;
 			primTable["doRepeat"]			= doRepeat;
 			primTable["broadcast:"]			= doBroadcast;
 			primTable["doBroadcastAndWait"]	= doBroadcastAndWait;

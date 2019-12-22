@@ -12,6 +12,7 @@ package extensions
 	import flash.utils.Timer;
 	import flash.utils.getTimer;
 	import flash.utils.setTimeout;
+	
 	import cc.customcode.interpreter.BlockInterpreter;
 	import cc.customcode.uibot.util.AppTitleMgr;
 	import cc.customcode.util.UploadSizeInfo;
@@ -143,6 +144,36 @@ package extensions
 			}
 			return new ByteArray;
 		}
+		
+		public function readAllBytes():ByteArray{
+			//var len:uint = _serial.getAvailable();
+			var tout:int = getTimer();
+			while(!_serial.getAvailable() &&  ( getTimer()- tout)<500  ){
+			}
+			
+			var rc:ByteArray =  _serial.readBytes();
+			var temp:ByteArray = new ByteArray();
+			while( rc.length){
+				//trace(rc.toString());
+				
+				while( rc.bytesAvailable){
+					temp.writeByte( rc.readUnsignedByte() );
+				}
+				/*for( var b:int; b<rc.length;b++){
+					trace(rc.readByte());
+					temp.writeByte( rc.readByte() );
+				}*/
+				
+				rc =  _serial.readBytes();
+			}
+			
+			
+			/*if(len>0){
+				return _serial.readBytes();
+			}*/
+			return temp;
+		}
+		
 		public function get board():String{
 			return _board;
 		}

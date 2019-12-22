@@ -39,6 +39,9 @@ package cc.customcode.interpreter
 				buffer.splice(0, 4);
 				if(callback!=RemoteCallMgr.Instance.onPacketRecv)
 				{
+					trace("PacketParser before-callback Index:" + index  +" ; value:"+value);
+					//- aqui se devuelve a Scratch el valor retornado 
+					//- conocemos tambien INDEX que es el nextid
 					trace("callback！=RemoteCallMgr.Instance.onPacketRecv")
 					callback();
 				}
@@ -134,8 +137,9 @@ package cc.customcode.interpreter
 				}else{
 					if(callback!=RemoteCallMgr.Instance.onPacketRecv)
 					{
+						
 						callback(value);
-						trace("callback！=RemoteCallMgr.Instance.onPacketRecv")
+						//trace("callback！=RemoteCallMgr.Instance.onPacketRecv")
 					}					
 				}
 			}

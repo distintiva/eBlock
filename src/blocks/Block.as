@@ -196,7 +196,7 @@ public class Block extends Sprite {
 			var b:Block;
 			labelsAndArgs.push(b = declarationBlock());
 		} else {
-			const loopBlocks:Array = ['doForever', 'doForeverIf', 'doRepeat', 'doUntil'];
+			const loopBlocks:Array = ['doForever', 'doForeverIf', 'doRepeat', 'doUntil', 'doForeverHat'];
 			base.hasLoopArrow = (loopBlocks.indexOf(op) >= 0);
 			addLabelsAndArgs(spec, base.color);
 		}

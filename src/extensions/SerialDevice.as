@@ -1,9 +1,20 @@
 package extensions
 {
+	import flash;
+	
+	import flash.concurrent.Condition;
+	import flash.concurrent.Mutex;
 	import flash.events.Event;
+	import flash.system.Worker;
+	import flash.system.WorkerDomain;
 	import flash.utils.ByteArray;
 	
 	import blockly.signals.Signal;
+	
+	
+	import cc.customcode.interpreter.RemoteCallMgr;
+	
+	
 
 	public class SerialDevice
 	{
@@ -102,6 +113,8 @@ package extensions
 				_receivedBytes.push(_receivedBuffer.readUnsignedByte());
 			}
 			_receivedBuffer.clear();
+			
+			//- Received data from DEVICE ---  then packetParser.parse()
 			if(_receivedBytes.length > 0){
 				dataRecvSignal.notify(_receivedBytes);
 			}
@@ -125,5 +138,134 @@ package extensions
 		public function close():void{
 //			ConnectionManager.sharedManager().close();
 		}
+		
+		
+		
+		public function runPackage(... arguments):void{
+			sendPackage(arguments, 2);
+		}
+		
+		public function getPackage(... arguments):void{
+			var nextID:int = arguments[0];
+			//Array.prototype.shift.call(arguments);
+			var args:Array = arguments;
+			args.shift();
+			
+			sendPackage( args, 1);
+		}
+		
+		private function sendPackage(argList, type):void{
+			var bytes:Array = [0xff, 0x55, 0, 0, type];
+			for(var i:int=0;i<argList.length;++i){
+				var val:* = argList[i];
+				if(val.constructor == "[class Array]"){
+					bytes = bytes.concat(val);
+				}else{
+					bytes.push(val);
+				}
+			}
+			bytes[2] = bytes.length - 3;
+			
+			//var dev:SerialDevice = SerialDevice.sharedDevice();
+			this.send(bytes);
+		}
+		
+		/*public function getPackage2(arguments):ByteArray{
+			var nextID:int = arguments[0];
+			//Array.prototype.shift.call(arguments);
+			var args:Array = arguments;
+			args.shift();
+			
+			return sendPackage2( args, 1);
+		}*/
+		
+		private function sendAndReceivePackage(argList):ByteArray{
+			var bytes:Array = [0xff, 0x55, 0, 0, 1];
+			for(var i:int=0;i<argList.length;++i){
+				var val:* = argList[i];
+				if(val.constructor == "[class Array]"){
+					bytes = bytes.concat(val);
+				}else{
+					bytes.push(val);
+				}
+			}
+			bytes[2] = bytes.length - 3;
+			
+			
+
+			var buffer:ByteArray = new ByteArray();
+			for(i=0;i<bytes.length;i++){
+				buffer[i] = bytes[i];
+			}
+			return ConnectionManager.sharedManager().sendBytesAndReceive(buffer);
+		}
+		
+		
+		public function reset():void{
+		  this.send([0xff, 0x55, 2, 0, 4]);
+		}
+		
+		//-- same function names as eblock.h
+		public function pin_set(pin, state):void{
+			if(state){
+				pin_on(pin);
+			}else{
+				pin_off(pin);
+			}
+		}
+		
+		//-- same function names as eblock.h
+		public function pin_on(pin):void{
+			runPackage([203,pin]);
+		}
+		public function pin_off(pin):void{
+			runPackage([204,pin]);
+		}
+		
+		public function pwm(pin, val):void{
+			runPackage([207,pin,val]);
+		}
+		
+		public function get_analog(pin):int{
+			var command:int=205;
+			
+			var response:ByteArray = sendAndReceivePackage([command, pin]);
+			return getValueFromResponseBuffer(response, command);
+		}
+		
+		
+		public function get_analog_perc(pin):int{
+			
+			var command:int=206;
+
+			var response:ByteArray = sendAndReceivePackage([command, pin]);
+			return getValueFromResponseBuffer(response, command);
+			
+		}
+		
+			private function getValueFromResponseBuffer(response:ByteArray, command:int):int{
+			response.position=0;
+			
+			response.endian = "littleEndian";
+			var v0:int = response.readUnsignedByte();
+			var v1:int = response.readUnsignedByte();
+			var v2:int = response.readUnsignedByte();  //- debe ser el mismo comando con el que se pide dato al firmware
+			
+			if(v2!=command && v0!=0xFF &&  v1!=0x55){
+				trace("getValueFromResponseBuffer>  wrong response from firmware");
+				return 0;
+			}
+			
+			
+			
+			response.position=4;
+			var retVal:int = response.readShort();
+			
+			
+			return retVal;
+			
+		}
+		
+		
 	}
 }

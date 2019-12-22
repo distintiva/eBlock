@@ -106,6 +106,10 @@ package cc.customcode.interpreter
 				case "doForever":
 					result.push(SyntaxTreeFactory.NewWhile(SyntaxTreeFactory.NewNumber(1), addFrameSuspend(block)));
 					break;
+				case "doForeverHat":
+					result.push(SyntaxTreeFactory.NewWhile(SyntaxTreeFactory.NewNumber(1), addFrameSuspend(block)));
+					break;
+				
 				case "doRepeat":
 					result.push(SyntaxTreeFactory.NewLoop(getArg(block, 0), addFrameSuspend(block)));
 					break;

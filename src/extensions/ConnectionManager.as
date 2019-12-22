@@ -176,6 +176,9 @@ package extensions
 		public function sendBytes(bytes:ByteArray):void{
 			if(SerialManager.sharedManager().isConnected){
 				SerialManager.sharedManager().sendBytes(bytes);
+				
+			//	var rec:ByteArray = SerialManager.sharedManager().readBytes();
+				
 			}else if(BluetoothManager.sharedManager().isConnected){
 				BluetoothManager.sharedManager().sendBytes(bytes);
 			}else if(HIDManager.sharedManager().isConnected){
@@ -183,6 +186,28 @@ package extensions
 			}
 			bytes.clear();
 		}
+		
+		public function sendBytesAndReceive(bytes:ByteArray):ByteArray{
+			var rec:ByteArray;
+			
+			if(SerialManager.sharedManager().isConnected){
+				SerialManager.sharedManager().sendBytes(bytes);
+				
+					rec = SerialManager.sharedManager().readAllBytes();
+					var x:int =rec[0];
+				
+				
+			}else if(BluetoothManager.sharedManager().isConnected){
+				BluetoothManager.sharedManager().sendBytes(bytes);
+			}else if(HIDManager.sharedManager().isConnected){
+				HIDManager.sharedManager().sendBytes(bytes);
+			}
+			bytes.clear();
+			
+			return rec;
+		}
+		
+		
 		public function readBytes():ByteArray{
 			if(_bytes){
 				return _bytes;
