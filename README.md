@@ -1,24 +1,48 @@
-<h1 align="center"> <img src="img/eblock_logo.png"></h1>
-eBlock is an application that allows you code all kinds of devices, is a enhanced versión of <a href="https://github.com/Makeblock-official/mBlock" target="_blank">mBlock 3.4.5/Scratch</a>
-<h1>&nbsp;</h1>
 <p align="center">
-	<strong>
-		<a href="#features">Features</a>
-		•
-		<a href="#installation">Installation</a>
-	</strong>
+  <a href="#readme">
+    <img src="img/eBlock.png" alt="eBlock logo" width="72" height="72">
+  </a>
+</p>
+
+<h3 align="center">eBlock 6.0</h3>
+
+<p align="center">
+A Scratch-based application with which you can program a wide variety of devices (Arduino, STM32, SAMD51, ESP32, NRF5 ... and more ...)
+  <br>
+  <!--<a href="https://github.com/distintiva/eBlock-devices#readme"><strong>Avaliable Devices</strong></a>
+  <br>-->
+  <br>
+  <a href="https://github.com/distintiva/eBlock-devices#readme">Avaliable devices</a>
+  ·
+  <a href="https://github.com/distintiva/eBlock/tree/latest">Download</a>
+  ·
+  <a href="https://github.com/distintiva/eBlock/issues">Request feature</a>
+  ·
 </p>
 
 ![eblock](eblock.png)
 
+## Table of contents
 
-### Note!!
-This repo has been recently created and the app still is in **beta version** so we need to upload more documentation.
+- [Why eBlock](#why-eblock)
+- [Status](#status)
+- [New Features](#new-features)
+- [Comming Features](#comming-features)
+- [License](#license)
 
-Please be patient, because behing this app there is a lot of work (app, new libraries, new extensions ...) 
 
 
-## Features
+
+## Why eBlock
+
+eBlock is based on the popular open source application [mBlock 3.4.5](https://github.com/Makeblock-official/mBlock) (a formidable work from Makeblock .Co, Ltd. company), many users still feel comfortable using that version of scratch due to simplicity.
+
+And for those of us who prefer to continue programming in **c/c ++** instead of Python
+
+Makeblock is no longer maintaining that version of mBlock and recent versions of mBlock are no longer opensource so we decided to create a fork of mBlock 3.4.5 to continue supporting and adding many interesting features.
+
+
+## New Features
 <details><summary><b>Unbranded</b></summary>
 This means that you can customize eBlock to show any devices you want, all avaliable or only your custom robots
 </details>
@@ -77,8 +101,7 @@ Lists can be also Strings
 - [ ] Add more devices and extensions
 
 
-### Installation
-Go to releases section 
+
 
 
 ### License
