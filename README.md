@@ -35,11 +35,14 @@ A Scratch-based application with which you can program a wide variety of devices
 
 ## Why eBlock
 
-eBlock is based on the popular open source application [mBlock 3.4.5](https://github.com/Makeblock-official/mBlock) (a formidable work from Makeblock .Co, Ltd. company), many users still feel comfortable using that version of scratch due to simplicity.
+eBlock is a fork of the popular open source application [mBlock 3.4.5](https://github.com/Makeblock-official/mBlock) (a formidable work from Makeblock .Co, Ltd. company) but Makeblock is no longer maintaining and supporting that version and the newest versions of mBlock are no longer open source  
 
-And for those of us who prefer to continue programming in **c/c ++** instead of Python
+Our team has built eBlock with the aim to **continue supporting it and adding a lot of new interesting features**.
 
-Makeblock is no longer maintaining that version of mBlock and recent versions of mBlock are no longer opensource so we decided to create a fork of mBlock 3.4.5 to continue supporting and adding many interesting features.
+And thinking of many users :
+- That still prefer version of scratch due to simplicity.
+- Those who prefer to continue programming in **c/c ++** instead of Python
+
 
 
 ## New Features
