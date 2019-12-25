@@ -478,6 +478,12 @@ package cc.customcode.uibot.ui.parts
 			
 			switch(key){
 				
+				case "download_boards":{
+				
+					navigateToURL(new URLRequest("https://github.com/distintiva/eBlock-devices"));
+					return;
+				
+				}
 				case "open_help":{
 					
 										

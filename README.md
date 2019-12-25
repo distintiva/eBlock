@@ -14,7 +14,7 @@ A Scratch-based application with which you can program a wide variety of devices
   <br>
   <a href="https://github.com/distintiva/eBlock-devices#readme">Avaliable devices</a>
   ·
-  <a href="https://github.com/distintiva/eBlock/tree/latest">Download</a>
+  <a href="https://github.com/distintiva/eBlock/releases/tag/latest">Download</a>
   ·
   <a href="https://github.com/distintiva/eBlock/issues">Request feature</a>
   ·
@@ -47,7 +47,7 @@ And thinking of many users :
 
 ## New Features
 <details><summary><b>Unbranded</b></summary>
-This means that you can customize eBlock to show any devices you want, all avaliable or only your custom robots
+This that eBlock is nod made ofr a specific devices or brand.  You can configure the devices you want to appear (all avaliable devices or only your custom robot)
 </details>
 
 <details><summary><b>Portable</b></summary>
@@ -70,6 +70,25 @@ eBlock/
 
 <details><summary><b>New design and more confortable colors</b></summary>
 A modern look and feel, and new block colors to understand better the code
+</details>
+
+<details><summary><b>String Variables</b></summary>
+Use string variables and eBlock will detect and convert it to source code
+</details>
+
+<details><summary><b>List and Arrays</b></summary>
+You can work with lists and convert it to source code for uploading to your device/robot.  It opens a new world on programming more complex robot actions.
+Lists can be also Strings
+</details>
+
+<details><summary><b>Removed user tracking code</b></summary>
+We have removed all user tracking codem because Block tracks almost every user action and sends it to Google Analitycs.
+eBlock uses only one remote call at startup to check for new version. And don't send any parameter or user data.
+</details>
+
+<details><summary><b>List and arrays</b></summary>
+You can work with lists and convert it to source code for uploading to your device/robot.  It opens a new world on programming more complex robot actions.
+Lists can be also Strings
 </details>
 
 <details><summary><b>Categorized extension blocks</b></summary>
@@ -100,14 +119,31 @@ You can manually edit the generated C/C++ code before uploading it to your devic
 Export your code blocks as image PNG to easy share with others
 </details>
 
-<details><summary><b>String Variables</b></summary>
-Use string variables and eBlock will detect and convert it to source code
+<details><summary><b>New extension system </b></summary>
+Also is backward compatble with existing mBlock extensions.
+
+Now you can place Synchronous calls inside a JavaScript extension funcion. For example get a value from your device and make some calculations before submitin to Scratch
+
+```javascript
+ext.getJoystick = function(nextID, coord){
+    
+    if(coord=="x"){
+      ret = device.get_analog_perc(0);
+    }else{
+      ret = device.get_analog_perc(1);
+    } 
+    
+    responseValue(ret-48);
+  };
+```
+
 </details>
 
-<details><summary><b>List and arrays</b></summary>
-You can work with lists and convert it to source code for uploading to your device/robot.  It opens a new world on programming more complex robot actions.
-Lists can be also Strings
+<details><summary><b>New Scratch native blocks </b></summary>
+ - **map:** Maps a value between 2 source low and high value to a dest low and high value
 </details>
+
+
 
 
 ## Comming Features

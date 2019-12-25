@@ -30,6 +30,7 @@ import flash.events.SecurityErrorEvent;
 import flash.filesystem.File;
 import flash.net.URLLoader;
 import flash.net.URLRequest;
+import flash.utils.Dictionary;
 import flash.utils.getTimer;
 import flash.utils.setTimeout;
 
@@ -48,6 +49,9 @@ import util.JSON;
 import util.LogManager;
 import util.ReadStream;
 import util.SharedObjectManager;
+
+
+
 
 public class ExtensionManager {
 
@@ -575,6 +579,24 @@ public class ExtensionManager {
 //		}
 	}
     
+	
+	
+	public function getCallbackId( extname:String, callbackname:String):int{
+		
+	
+		
+		var ext:ScratchExtension = extensionDict[extname];
+		
+		var callback:Object = (ext.callbacks);
+		
+		
+		for (var k:int in  callback){
+			if( callback[k] == callbackname ) return k;
+		}
+		
+		
+		return 0;
+	}
 	
 	
 	public function loadRawExtension(extObj:Object):void {

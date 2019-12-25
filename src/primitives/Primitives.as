@@ -132,6 +132,20 @@ package primitives {
 			primTable["INCR_COUNT"]			= function(b:*):* { counter++ };
 			primTable["CLR_COUNT"]			= function(b:*):* { counter = 0 };
 			
+			
+			primTable["mapFunction"]				= function(b:*):* { 
+				var v:* = interp.numarg(b, 0);
+				var fL:* = interp.numarg(b, 1);
+				var fH:* = interp.numarg(b, 2);
+				var tL:* = interp.numarg(b, 1);
+				var tH:* = interp.numarg(b, 2);
+				
+				if((fH + fL)==0) return null;
+					
+				return ( v/ (fH + fL) ) * (tH - tL) + tL ; 
+				
+				};
+			
 			new LooksPrims(app, interp).addPrimsTo(primTable);
 			new MotionAndPenPrims(app, interp).addPrimsTo(primTable);
 			new SoundPrims(app, interp).addPrimsTo(primTable);

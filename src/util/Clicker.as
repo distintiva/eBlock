@@ -15,7 +15,7 @@ package util
 		}
 		public function click():void{
 			navigateToURL(new URLRequest(link));
-			eBlock.app.track("click_"+name);
+			//eBlock.app.track("click_"+name);
 			SharedObjectManager.sharedManager().setObject("click_"+name,true);
 		}
 		public function isShow():Boolean{

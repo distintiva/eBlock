@@ -76,7 +76,7 @@ package extensions
 					break;
 				}*/
 				/*case "driver":{
-					eBlock.app.track("/OpenSerial/InstallDriver");
+					//eBlock.app.track("/OpenSerial/InstallDriver");
 					var fileDriver:File;
 					if(ApplicationManager.sharedManager().system==ApplicationManager.MAC_OS){
 						fileDriver = new File(File.applicationDirectory.nativePath+"/drivers/Arduino Driver.pkg");
@@ -111,7 +111,7 @@ package extensions
 						BluetoothManager.sharedManager().connect(name.split("bt_").join(""));
 					}
 					/*if(name.indexOf("net_")>-1){
-						eBlock.app.track("/Connect/Net");
+						//eBlock.app.track("/Connect/Net");
 						isConnectCmd = true;
 						SocketManager.sharedManager().probe(name.split("net_")[1]);
 					}*/

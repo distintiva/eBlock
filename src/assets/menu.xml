@@ -43,7 +43,7 @@
 			<item name="xxx" label="xxx" />
 		</subMenu>
 		<item name="Install Driver"  action="driver" />
-		<item name="Get more devices from web..."  action="download_boards" />
+		<item name="Download more devices from GitHub..."  action="download_boards" />
 		<item isSeparator="true" />
 		<item name="Select Device" enabled="false"  />
 		
@@ -51,8 +51,7 @@
 		
 	</subMenu>
 	<subMenu name="Extensions" label="Extensions">
-		<item name="Reload Extensions from disk" label="Reload Extensions from disk" />
-		<item name="Get more extensions from web..." action="download_extensions" />
+		<item name="Get more extensions from GitHub..." action="download_extensions" />
 		<item isSeparator="true" />
 	</subMenu>
 	<subMenu name="Language" label="语言">
@@ -74,13 +73,13 @@
 		<item name="Open Extensions folder" action="open_extensions"  />
 		<item name="Open Selected device folder" action="open_device"/>
 		<item isSeparator="true" />
-		<item name="Download Devices" />
+		<item name="Download Devices" url="https://github.com/distintiva/eBlock-devices" />
 		<item name="Download Extensions" />
 		<item isSeparator="true" />
 		<item name="Online documentation"/>
 		<item name="How to extend eBlock"/>
 		<item isSeparator="true" />
-		<item name="The eBlock project"/>
+		<item name="eBlock on GitHub" url="https://github.com/distintiva/eBlock/#readme"/>
 		
 		
 	</subMenu>

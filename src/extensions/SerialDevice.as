@@ -1,18 +1,12 @@
 package extensions
 {
-	import flash;
+		
 	
-	import flash.concurrent.Condition;
-	import flash.concurrent.Mutex;
 	import flash.events.Event;
-	import flash.system.Worker;
-	import flash.system.WorkerDomain;
 	import flash.utils.ByteArray;
-	
 	import blockly.signals.Signal;
-	
-	
-	import cc.customcode.interpreter.RemoteCallMgr;
+		
+//	import cc.customcode.interpreter.RemoteCallMgr;
 	
 	
 
@@ -207,27 +201,26 @@ package extensions
 		
 		//-- same function names as eblock.h
 		public function pin_set(pin, state):void{
-			if(state){
-				pin_on(pin);
-			}else{
-				pin_off(pin);
-			}
+			runPackage([30,pin, state]);
 		}
 		
 		//-- same function names as eblock.h
 		public function pin_on(pin):void{
-			runPackage([203,pin]);
+			pin_set(pin, 1);
 		}
 		public function pin_off(pin):void{
-			runPackage([204,pin]);
+			pin_set(pin, 0);
+		}
+		public function pin_toggle(pin):void{
+			pin_set(pin, 2);
 		}
 		
 		public function pwm(pin, val):void{
-			runPackage([207,pin,val]);
+			runPackage([32,pin,val]);
 		}
 		
 		public function get_analog(pin):int{
-			var command:int=205;
+			var command:int=31;
 			
 			var response:ByteArray = sendAndReceivePackage([command, pin]);
 			return getValueFromResponseBuffer(response, command);

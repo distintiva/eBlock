@@ -1,5 +1,5 @@
 package {
-	import com.google.analytics.GATracker;
+	//import com.google.analytics.GATracker;
 	
 	import flash.desktop.NativeApplication;
 	import flash.desktop.NativeProcess;
@@ -152,7 +152,7 @@ package {
 		public var imagesPart:ImagesPart;
 		protected var soundsPart:SoundsPart;
 		protected var stagePart:StagePart;
-		private var ga:GATracker;
+		//private var ga:GATracker;
 		private var tabsPart:TabsPart;
 		private var _welcomeView:Loader;
 		private var _currentVer:String = "05.05.001";
@@ -213,8 +213,8 @@ package {
 			UIManager.setLookAndFeel(new MyLookAndFeel());
 			AppTitleMgr.Instance.init(stage.nativeWindow);
 //			ApplicationManager.sharedManager().isCatVersion = NativeApplication.nativeApplication.applicationDescriptor.toString().indexOf("猫友")>-1;
-			ga = new GATracker(this,"UA-110631-15","AS3",false);
-			track("/app/launch");
+			//ga = new GATracker(this,"XXXXXXXXX","AS3",false);
+			//track("/app/launch");
 			new InvokeMgr();
 			stage.nativeWindow.addEventListener(Event.CLOSING,onExiting);
 			AppUpdater.getInstance().start();
@@ -274,7 +274,7 @@ package {
 			if(!SharedObjectManager.sharedManager().getObject("app-first-launch",false))
 			{
 				SharedObjectManager.sharedManager().setObject("app-first-launch",true);
-				ga.trackPageview(ApplicationManager.sharedManager().isCatVersion?"/myh/":"/") + "/app-first-launch";
+				//ga.trackPageview(ApplicationManager.sharedManager().isCatVersion?"/myh/":"/") + "/app-first-launch";
 			}
 			if(!SharedObjectManager.sharedManager().getObject(versionString+".0."+_currentVer,false)){
 				//SharedObjectManager.sharedManager().clear();
@@ -369,9 +369,9 @@ package {
 		}
 		
 		public function track(msg:String):void{
-			ga.trackPageview(
+			/*ga.trackPageview(
 				(ApplicationManager.sharedManager().isCatVersion?"/myh/":"/") + eBlock.versionString + msg
-			);
+			);*/
 		}
 		
 		protected function initTopBarPart():void {
@@ -426,7 +426,7 @@ package {
 			SerialManager.sharedManager().disconnect();
 			HIDManager.sharedManager().disconnect();
 			NativeApplication.nativeApplication.exit();
-			track("/app/exit");
+			//track("/app/exit");
 			LogManager.sharedManager().save();
 		}
 		
@@ -648,7 +648,7 @@ package {
 	
 		
 		private function infoTextClick(e:MouseEvent):void{
-			navigateToURL(new URLRequest("http://www.academy.bot/eblock"),"_blank");
+			navigateToURL(new URLRequest("https://github.com/distintiva/eBlock/#readme"),"_blank");
 		}
 		
 		

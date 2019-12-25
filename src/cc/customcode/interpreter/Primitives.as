@@ -67,6 +67,8 @@ package cc.customcode.interpreter {
 			// clone
 			provider.register("createCloneOf", primCreateCloneOf);
 			provider.register("deleteClone", primDeleteClone);
+			
+			provider.register("mapFunction:", onMapFunction);
 //			
 //			// testing (for development)
 //			provider.register("COUNT", function(thread:Thread, argList:Array):void { return counter });
@@ -88,6 +90,23 @@ package cc.customcode.interpreter {
 				thread.push(low + Math.random() * (hi - low));
 			}
 		}
+		
+		private function onMapFunction(thread:Thread, argList:Array):void
+		{
+			
+			var v:Number = argList[0];
+			var fL:Number = argList[1];
+			var fH:Number = argList[2];
+			var tL:Number= argList[3];
+			var tH:Number = argList[4];
+			
+			if( (fH + fL)==0) thread.push(v);
+			
+			thread.push (   Math.floor( (v/ (fH + fL) ) * (tH - tL) + tL )  ); 
+			
+			
+		}
+		
 		
 //		private function primRandom(thread:Thread, argList:Array):void {
 //			var n1:Number = interp.numarg(b, 0);

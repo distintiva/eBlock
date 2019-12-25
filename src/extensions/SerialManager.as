@@ -246,7 +246,7 @@ package extensions
 			}
 		}
 		/*public function openSource():void{
-			eBlock.app.track("/OpenSerial/ViewSource");
+			//eBlock.app.track("/OpenSerial/ViewSource");
 			var file:File = ApplicationManager.sharedManager().documents.resolvePath("mBlock/firmware/" + getFirmwareName());
 			if(file.exists && file.isDirectory){
 				file.openWithDefaultApplication();
