@@ -47,7 +47,7 @@ And thinking of many users :
 
 ## New Features
 <details><summary><b>Unbranded</b></summary>
-This that eBlock is nod made ofr a specific devices or brand.  You can configure the devices you want to appear (all avaliable devices or only your custom robot)
+This means that eBlock is not made for a specific device or brand.  You can configure the devices you want to appear (all avaliable devices or only your custom robot)
 </details>
 
 <details><summary><b>Portable</b></summary>
@@ -82,8 +82,8 @@ Lists can be also Strings
 </details>
 
 <details><summary><b>Removed user tracking code</b></summary>
-We have removed all user tracking codem because Block tracks almost every user action and sends it to Google Analitycs.
-eBlock uses only one remote call at startup to check for new version. And don't send any parameter or user data.
+We have removed all user tracking code because mBlock tracks almost every user action and sends it to Google Analitycs.
+eBlock uses only one remote call at startup to check for new version. And never sends any parameter or user data.
 </details>
 
 <details><summary><b>List and arrays</b></summary>
@@ -122,7 +122,7 @@ Export your code blocks as image PNG to easy share with others
 <details><summary><b>New extension system </b></summary>
 Also is backward compatble with existing mBlock extensions.
 
-Now you can place Synchronous calls inside a JavaScript extension funcion. For example get a value from your device and make some calculations before submitin to Scratch
+Now you can place synchronous calls inside a JavaScript extension functions. For example get a value from your device and make some calculations before submitin to Scratch
 
 ```javascript
 ext.getJoystick = function(nextID, coord){
@@ -142,6 +142,16 @@ ext.getJoystick = function(nextID, coord){
 <details><summary><b>New Scratch native blocks </b></summary>
  - **map:** Maps a value between 2 source low and high value to a dest low and high value
 </details>
+
+
+
+
+## Download
+
+Portable version, no installer, only unzip and exec **eBlock.exe**
+Download the latest eBlock version from:
+
+[eBlock-windows (27Mb)](https://github.com/distintiva/eBlock/releases/download/latest/eBlock-win.zip)
 
 
 
