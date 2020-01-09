@@ -1,13 +1,13 @@
 package util
 {
-	import flash.events.Event;
-	import flash.events.IOErrorEvent;
+//	import flash.events.Event;
+//	import flash.events.IOErrorEvent;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
 	import flash.net.SharedObject;
-	import flash.net.URLLoader;
-	import flash.net.URLRequest;
+//	import flash.net.URLLoader;
+//	import flash.net.URLRequest;
 
 	public class SharedObjectManager
 	{
@@ -15,7 +15,7 @@ package util
 		private var _so:SharedObject;
 		public function SharedObjectManager()
 		{
-			_so = SharedObject.getLocal("makeblock","/");
+			_so = SharedObject.getLocal("eblock_config","/");
 		}
 		public static function sharedManager():SharedObjectManager{
 			if(_instance==null){

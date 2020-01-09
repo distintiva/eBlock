@@ -14,7 +14,7 @@ A Scratch-based application with which you can program a wide variety of devices
   <br>
   <a href="https://github.com/distintiva/eBlock-devices#readme">Avaliable devices</a>
   ·
-  <a href="https://github.com/distintiva/eBlock/releases/tag/latest">Download</a>
+  <a href="#download">Download</a>
   ·
   <a href="https://github.com/distintiva/eBlock/issues">Request feature</a>
   ·
@@ -148,11 +148,10 @@ ext.getJoystick = function(nextID, coord){
 
 ## Download
 
-Portable version, no installer, only unzip and exec **eBlock.exe**
+Portable version, no installer, only unzip and exec **eBlock.exe** 
 Download the latest eBlock version from:
 
 [eBlock-windows (27Mb)](https://github.com/distintiva/eBlock/releases/download/latest/eBlock-win.zip)
-
 
 
 

@@ -167,10 +167,7 @@ public class ProjectIO {
 		jsonData = fixForNewExtension(jsonData);
 		if(jsonData.indexOf("PicoBoard")>-1){
 			DeviceManager.sharedManager().onSelectBoard("picoboard_unknown");
-		}else if(jsonData.indexOf("Makeblock")>-1){
-			if(!eBlock.app.extensionManager.checkExtensionSelected("Board Selected")){
-				eBlock.app.extensionManager.onSelectExtension("Makeblock");
-			}
+		
 		}else if(jsonData.indexOf("Arduino.")>-1){
 			if(!eBlock.app.extensionManager.checkExtensionSelected("Arduino")){
 				eBlock.app.extensionManager.onSelectExtension("Arduino");

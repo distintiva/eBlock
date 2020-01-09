@@ -41,7 +41,6 @@ package uiwidgets {
 	import blocks.BlockIO;
 	import blocks.BlockShape;
 	
-	//import cc.makeblock.util;
 	import cc.customcode.menu.MenuBuilder;
 	import cc.customcode.util.FileUtil;
 	

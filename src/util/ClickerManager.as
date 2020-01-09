@@ -30,7 +30,7 @@ package util
 			//trace("UPDATE");
 			//trace("http://download.makeblock.cc/mblock/resources/click"+(ApplicationManager.sharedManager().isCatVersion?"_myh":"")+".txt?time="+Math.floor(new Date().time/100000));
 			
-			urlloader.load(new URLRequest("http://download.makeblock.cc/mblock/resources/click"+(ApplicationManager.sharedManager().isCatVersion?"_myh":"")+".txt?time="+Math.floor(new Date().time/100000)));
+			//urlloader.load(new URLRequest("http://download.makeblock.cc/mblock/resources/click"+(ApplicationManager.sharedManager().isCatVersion?"_myh":"")+".txt?time="+Math.floor(new Date().time/100000)));
 		}
 		private function onComplete(evt:Event):void{
 			try{

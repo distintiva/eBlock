@@ -8,8 +8,6 @@ package cc.customcode.menu
 	import flash.events.Event;
 	import flash.utils.ByteArray;
 	
-	//import cc.makeblock.util.FileUtil;
-
 	public class SystemMenu
 	{
 		private const handlerDict:Object = {};

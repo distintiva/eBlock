@@ -534,7 +534,6 @@ package cc.customcode.uibot.ui.parts
 					//eBlock.app.track("/OpenSerial/InstallDriver");
 					var fileDriver:File;
 					if(ApplicationManager.sharedManager().system==ApplicationManager.MAC_OS){
-						//						navigateToURL(new URLRequest("https://github.com/Makeblock-official/Makeblock-USB-Driver"));
 						fileDriver = new File(File.applicationDirectory.nativePath+"/resources/drivers/"+ DeviceManager.sharedManager().selectedBoard.driver.mac);
 						fileDriver.openWithDefaultApplication();
 					}else{

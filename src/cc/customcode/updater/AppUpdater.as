@@ -36,7 +36,7 @@ package cc.customcode.updater
 			return _instance;
 		}
 		
-		static public const CONFIG_PATH:String = "https://makeblock.es/eblock/version.php";
+		static public const CONFIG_PATH:String = "http://academy.bot/eblock_version.php";
 		
 		private var ldr:URLLoader;
 //		private var frame:UpdateFrame;

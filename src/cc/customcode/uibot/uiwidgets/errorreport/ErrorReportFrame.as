@@ -14,11 +14,11 @@ package cc.customcode.uibot.uiwidgets.errorreport
 			
 			return;  //*JC*
 			
-			var request:URLRequest = new URLRequest("http://feedback.makeblock.com/");
+			var request:URLRequest = new URLRequest("http://feedback.XXXXXXXX/");
 			var data:URLVariables = new URLVariables();
 			data.m = msg;
 			data.os = Capabilities.os;
-			data.v = "mBlock " + eBlock.versionString;
+			data.v = "eBlock " + eBlock.versionString;
 			data.l = (Translator.currentLang.indexOf("zh_") == 0) ? "zh" : "en";
 			request.data = data;
 			navigateToURL(request);

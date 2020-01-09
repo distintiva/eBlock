@@ -287,7 +287,7 @@ package extensions
 				return;
 			}
 			_list = str.split(",");
-			//_list.push("asdf","fda","666","7777","asdfasdfasdf","谭启亮","mblock","makeblock","airblock","flash builder","谭启亮","mblock","makeblock","airblock","flash builder","end")
+			//_list.push("asdf","fda","666","7777","asdfasdfasdf","谭启亮","eblock",,"flash builder","谭启亮","mblock","flash builder","end")
 			LogManager.sharedManager().log("device list:"+_list);
 			for(var i:uint=0;i<_list.length;i++){
 				for(var j:* in _dialogboxDiscover){

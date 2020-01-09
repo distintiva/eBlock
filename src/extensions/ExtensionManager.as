@@ -587,6 +587,8 @@ public class ExtensionManager {
 		
 		var ext:ScratchExtension = extensionDict[extname];
 		
+		if(ext ==null) return 0;
+		
 		var callback:Object = (ext.callbacks);
 		
 		
