@@ -203,6 +203,12 @@ public class BlockArg extends Sprite {
 		if (field != null) {
 			var s:String = (value == null) ? '' : value;
 			field.text = (label) ? label : s;
+			
+			if(field.width>200){
+				
+				field.width=200;
+			}
+			
 			if(value is String)
 			if(label==null&&menuName==null){
 				value = s;
@@ -261,11 +267,22 @@ public class BlockArg extends Sprite {
 	private function makeTextField():TextField {
 		var tf:TextField = new TextField();
 		offsetTextField(tf);
+		
 		tf.autoSize = TextFieldAutoSize.LEFT;
+		//tf.height=16;
+		//tf.width=100;
+		
 		Block.argTextFormat.bold = false;
 		tf.defaultTextFormat = Block.argTextFormat;
 		tf.selectable = false;
+		
+		//tf.multiline = true;
+		
+		
 		tf.addEventListener(Event.CHANGE, textChanged);
+		
+		tf.addEventListener(FocusEvent.FOCUS_OUT, textLeave);
+		
 		return tf;
 	}
 
@@ -284,7 +301,16 @@ public class BlockArg extends Sprite {
 	
 	static private var isShowingCode:Boolean;
 
-	private function textChanged(evt:*):void {
+	
+	private function textLeave(evt:Event):void {
+		if(evt != null){
+			var tf:TextField =  evt.currentTarget as TextField;
+			tf.setSelection(0,1);
+		}
+	}
+	
+	private function textChanged(evt:Event):void {
+		
 		argValue = field.text;
 		if (isNumber) {
 			// optimization: coerce to a number if possible
@@ -309,7 +335,21 @@ public class BlockArg extends Sprite {
 		if (menuIcon != null) padding = (type == 'd') ? 10 : 13;
 		var w:int = Math.max(14, field.textWidth + 6 + padding);
 		if (menuIcon) menuIcon.x = w - menuIcon.width - 3;
+		
+		//*JC*  
+		//evt.currentTarget
+		//if(evt != null){
+		//var tf:TextField =  evt.currentTarget as TextField;
+		if(w>200) {
+			field.autoSize = TextFieldAutoSize.NONE;
+			w =200;
+			field.width = w;
+		}else{
+			field.autoSize = TextFieldAutoSize.LEFT;
+		}
+		//}
 		base.setWidth(w);
+		
 		base.redraw();
 		if (parent is Block) Block(parent).fixExpressionLayout();
 
