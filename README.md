@@ -46,80 +46,112 @@ And thinking of many users :
 
 
 ## New Features
-<details><summary><b>Unbranded</b></summary>
-This means that eBlock is not made for a specific device or brand.  You can configure the devices you want to appear (all avaliable devices or only your custom robot)
-</details>
 
-<details><summary><b>Portable</b></summary>
 
-```text
-eBlock/
-├── media/
-├── resources/    
-|      ├── arduino/
-|      ├── devices/
-|      ├── drivers/
-|      ├── extensions/
-|      └── locale.xlsx
-|
-└───eBlock.exe
+### New UI design and more confortable colors
 
-```
-
-</details>
-
-<details><summary><b>New design and more confortable colors</b></summary>
 A modern look and feel, and new block colors to understand better the code
-</details>
 
-<details><summary><b>String Variables</b></summary>
-Use string variables and eBlock will detect and convert it to source code
-</details>
+![img/blocks_color.png](img/blocks_color.png)
 
-<details><summary><b>List and Arrays</b></summary>
-You can work with lists and convert it to source code for uploading to your device/robot.  It opens a new world on programming more complex robot actions.
-Lists can be also Strings
-</details>
+### Categorized extension blocks
+You can place your extension blocks to the corresponding category
 
-<details><summary><b>Removed user tracking code</b></summary>
+![img/categorized.png](img/categorized.png)
+
+
+
+### String Variables
+Use string variables and eBlock will detect and convert it to its corresponding source code
+
+![img/variable_text.png](img/variable_text.png)
+
+
+
+### List ( Arrays )
+You can work with lists and eBlock will convert them to source too. It opens a new world on programming more complex robot actions.
+**Lists items can be numbers or Strings**
+
+![img/variable_arrays.png](img/variable_arrays.png)
+
+### RTTTL tones
+
+RTTTL is a melody format developed by Nokia some years ago.  It allows to transfer songs in a easy way.
+
+[RTTTL on wikipedia](<https://en.wikipedia.org/wiki/Ring_Tone_Transfer_Language>)
+
+You can play a song in background while your robot is moving or doing any action.
+
+
+![img/rtttl.png](img/rtttl.png)
+
+or you can wait  for rtttl tone to end
+
+![img/rtttl_wait.png](img/rtttl_wait.png)
+
+### New matrix editor and Block
+Now matrix editor allow to use a 5x5 matrix ( for example to use with BBC micro:bit )  
+
+![img/matrix.png](img/matrix.png)
+
+and a new matrix block that shows you better the matrix thumbnail
+
+![img/matrix_block.png](img/matrix_block.png)
+
+### Source code viewer and editor
+New dark theme, and bigger to review your code easilly.
+
+Now you can **edit** the generated C/C++ code before uploading it to your device. It allows beginners to remove the fear of writing in source code 
+
+![img/source_editor.png](img/source_editor.png)
+
+### New console
+The output console has moved it's possition,  access it only if you want
+
+![img/console.png](img/console.png)
+
+### Event driven code
+Now you can code easily using device events, instead in putting all your code inside main loop.
+
+![img/events.png](img/events.png)
+
+
+![img/events2.png](img/events2.png)
+
+
+
+### Export your blocks as image
+Export your code blocks as image PNG to easy share with others, make documentation or upload to your web
+
+![img/save_image.png](img/save_image.png)
+
+### Portable
+
+![img/portable.png](img/portable.png)
+
+
+### Removed user tracking code
 We have removed all user tracking code because mBlock tracks almost every user action and sends it to Google Analitycs.
 eBlock uses only one remote call at startup to check for new version. And never sends any parameter or user data.
-</details>
 
-<details><summary><b>List and arrays</b></summary>
-You can work with lists and convert it to source code for uploading to your device/robot.  It opens a new world on programming more complex robot actions.
-Lists can be also Strings
-</details>
 
-<details><summary><b>Categorized extension blocks</b></summary>
-You can place your extension blocks to the corresponding category
-</details>
 
-<details><summary><b>Small download size</b></summary>
+
+### Small download size
 The size of eBlock is < 30MB
-</details>
 
-<details><summary><b>Multiple devices</b></summary>
+
+### Multiple devices
 Not only Arduino based boards now you can code  micro:bit, SAMD51, NRF5, STM32, ESP8266, ESP32 ... 
-</details>
 
-<details><summary><b>Device full customization</b></summary>
+
+### Full device customization
+
 Each device can have one or more firmware to flash, it's own drivers to install or custom code templates to translate blocks
-</details>
 
-<details><summary><b>Evend driven code</b></summary>
-Now you can code easily using device events, instead in putting all your code inside main loop.
-</details>
 
-<details><summary><b>Source code editor</b></summary>
-You can manually edit the generated C/C++ code before uploading it to your device. It allows beginners to remove the fear of writing in source code 
-</details>
 
-<details><summary><b>Export your blocks as image</b></summary>
-Export your code blocks as image PNG to easy share with others
-</details>
-
-<details><summary><b>New extension system </b></summary>
+### New extension system 
 Also is backward compatble with existing mBlock extensions.
 
 Now you can place synchronous calls inside a JavaScript extension functions. For example get a value from your device and make some calculations before submitin to Scratch
@@ -137,11 +169,11 @@ ext.getJoystick = function(nextID, coord){
   };
 ```
 
-</details>
 
-<details><summary><b>New Scratch native blocks </b></summary>
+
+### New Scratch native blocks 
  - **map:** Maps a value between 2 source low and high value to a dest low and high value
-</details>
+
 
 
 
@@ -161,6 +193,7 @@ Download the latest eBlock version from:
 - [ ] Linux version
 - [ ] New extensions
 - [ ] Add more devices and extensions
+
 
 
 
