@@ -8,16 +8,8 @@
 
 <p align="center">
 A Scratch-based application with which you can program a wide variety of devices (Arduino, STM32, SAMD51, ESP32, NRF5 ... and more ...)
-  <br>
-  <!--<a href="https://github.com/distintiva/eBlock-devices#readme"><strong>Avaliable Devices</strong></a>
-  <br>-->
-  <br>
-  <a href="https://github.com/distintiva/eBlock-devices#readme">Avaliable devices</a>
-  ·
-  <a href="#download">Download</a>
-  ·
-  <a href="https://github.com/distintiva/eBlock/issues">Request feature</a>
-  ·
+
+You can use all devices in Online mode ( also BBC micro:bit !)
 </p>
 
 ![eblock](eblock.png)
@@ -28,6 +20,8 @@ A Scratch-based application with which you can program a wide variety of devices
 - [Status](#status)
 - [New Features](#new-features)
 - [Comming Features](#comming-features)
+- [Devices](#devices)
+- [Download](#download)
 - [License](#license)
 
 
@@ -42,6 +36,14 @@ Our team has built eBlock with the aim to **continue supporting it and adding a 
 And thinking of many users :
 - That still prefer version of scratch due to simplicity.
 - Those who prefer to continue programming in **c/c ++** instead of Python
+
+
+
+## Status
+
+eBlock is now a stable release, anyway there is a list of pending features to add that we are activelly coding.
+
+We are finishing documentation and a wide variety of sample programs showing the new features, so please be patient ;)
 
 
 
@@ -113,9 +115,6 @@ The output console has moved it's possition,  access it only if you want
 ### Event driven code
 Now you can code easily using device events, instead in putting all your code inside main loop.
 
-![img/events.png](img/events.png)
-
-
 ![img/events2.png](img/events2.png)
 
 
@@ -177,6 +176,15 @@ ext.getJoystick = function(nextID, coord){
 
 
 
+## Devices
+
+You can program a wide variety of devices with eBlock, and if you want to use eBlock with your own robot,  you can customize the list of devices to show only the device/s you want.
+
+Please can contribute to add more devices to the list, you can view current avaliable devices in the next repo:
+
+[https://github.com/distintiva/eBlock-devices#readme](https://github.com/distintiva/eBlock-devices#readme)
+
+
 
 ## Download
 
@@ -187,14 +195,14 @@ Download the latest eBlock version from:
 
 
 
+
+
 ## Comming Features
 
 - [ ] 64bit MacOS version
 - [ ] Linux version
 - [ ] New extensions
 - [ ] Add more devices and extensions
-
-
 
 
 

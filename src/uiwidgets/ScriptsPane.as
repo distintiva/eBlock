@@ -453,9 +453,9 @@ return true; // xxx disable this check for now; it was causing confusion at Scra
 
 	public function menu(evt:MouseEvent):NativeMenu {
 		
-		if(app.scriptsPart.isArduinoMode){
+		/*if(app.scriptsPart.isArduinoMode){
 			return null;	
-		}
+		}*/
 		
 		if(null == ctxMenu){
 			ctxMenu = MenuBuilder.CreateMenu("ScriptsPane");
