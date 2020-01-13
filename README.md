@@ -21,6 +21,7 @@ You can use all devices in Online mode ( also BBC micro:bit !)
 - [New Features](#new-features)
 - [Comming Features](#comming-features)
 - [Devices](#devices)
+- [Extensions](#extensions)
 - [Download](#download)
 - [License](#license)
 
@@ -83,13 +84,13 @@ RTTTL is a melody format developed by Nokia some years ago.  It allows to transf
 [RTTTL on wikipedia](<https://en.wikipedia.org/wiki/Ring_Tone_Transfer_Language>)
 
 You can play a song in background while your robot is moving or doing any action.
-
-
 ![img/rtttl.png](img/rtttl.png)
 
-or you can wait  for rtttl tone to end
-
+Or you can wait  for rtttl tone to end
 ![img/rtttl_wait.png](img/rtttl_wait.png)
+
+And you can make interactive leds using the current playing frequency level 
+![img/rtttl_interactive.png](img/rtttl_interactive.png)
 
 ### New matrix editor and Block
 Now matrix editor allow to use a 5x5 matrix ( for example to use with BBC micro:bit )  
@@ -149,9 +150,26 @@ Not only Arduino based boards now you can code  micro:bit, SAMD51, NRF5, STM32, 
 Each device can have one or more firmware to flash, it's own drivers to install or custom code templates to translate blocks
 
 
+### New Scratch native blocks 
+ - **map:** Maps a value between 2 source low and high value to a dest low and high value
 
-### New extension system 
-Also is backward compatble with existing mBlock extensions.
+
+
+
+## Devices
+
+You can program a wide variety of devices with eBlock, and if you want to use eBlock with your own robot,  you can customize the list of devices to show only the device/s you want.
+
+Please can contribute to add more devices to the list, you can view current avaliable devices in the next repo:
+
+[https://github.com/distintiva/eBlock-devices#readme](https://github.com/distintiva/eBlock-devices#readme)
+
+
+## Extensions
+eBlock has a new extension system but is backward compatble with existing mBlock extensions, tha you can download from:
+
+[https://www.mblock.cc/extensions/](https://www.mblock.cc/extensions/)
+
 
 Now you can place synchronous calls inside a JavaScript extension functions. For example get a value from your device and make some calculations before submitin to Scratch
 
@@ -167,23 +185,6 @@ ext.getJoystick = function(nextID, coord){
     responseValue(ret-48);
   };
 ```
-
-
-
-### New Scratch native blocks 
- - **map:** Maps a value between 2 source low and high value to a dest low and high value
-
-
-
-
-## Devices
-
-You can program a wide variety of devices with eBlock, and if you want to use eBlock with your own robot,  you can customize the list of devices to show only the device/s you want.
-
-Please can contribute to add more devices to the list, you can view current avaliable devices in the next repo:
-
-[https://github.com/distintiva/eBlock-devices#readme](https://github.com/distintiva/eBlock-devices#readme)
-
 
 
 ## Download

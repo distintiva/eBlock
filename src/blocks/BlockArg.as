@@ -204,9 +204,9 @@ public class BlockArg extends Sprite {
 			var s:String = (value == null) ? '' : value;
 			field.text = (label) ? label : s;
 			
-			if(field.width>200){
+			if(field.width>250){
 				
-				field.width=200;
+				field.width=250;
 			}
 			
 			if(value is String)
@@ -340,9 +340,9 @@ public class BlockArg extends Sprite {
 		//evt.currentTarget
 		//if(evt != null){
 		//var tf:TextField =  evt.currentTarget as TextField;
-		if(w>200) {
+		if(w>250) {
 			field.autoSize = TextFieldAutoSize.NONE;
-			w =200;
+			w =250;
 			field.width = w;
 		}else{
 			field.autoSize = TextFieldAutoSize.LEFT;
