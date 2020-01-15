@@ -192,7 +192,7 @@ ext.getJoystick = function(nextID, coord){
 Portable version, no installer, only unzip and exec **eBlock.exe** 
 Download the latest eBlock version from:
 
-[eBlock-windows (27Mb)](https://github.com/distintiva/eBlock/releases/download/latest/eBlock-win.zip)
+[eBlock-windows (27Mb)](https://github.com/distintiva/eBlock/releases/latest/download/eBlock-win.zip)
 
 
 
@@ -204,6 +204,14 @@ Download the latest eBlock version from:
 - [ ] Linux version
 - [ ] New extensions
 - [ ] Add more devices and extensions
+
+
+
+## References
+- [**mBloc 3.4.5 source** as a base for eBlock - https://github.com/Makeblock-official/mBlock](https://github.com/Makeblock-official/mBlock)
+- [**Arduino List Library** - by Luis Llamas https://github.com/luisllamasbinaburo/Arduino-List](https://github.com/luisllamasbinaburo/Arduino-List)
+- [**RTTTL NonBlocking lib** - forked from https://github.com/end2endzone/NonBlockingRTTTL](https://github.com/end2endzone/NonBlockingRTTTL) 
+- [**Distintiva micro:bit lib** - https://github.com/distintiva/distintiva_microbit_lib](https://github.com/distintiva/distintiva_microbit_lib)
 
 
 

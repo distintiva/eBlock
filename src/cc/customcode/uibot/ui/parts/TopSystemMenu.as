@@ -79,6 +79,8 @@ package cc.customcode.uibot.ui.parts
 			register("Manage Extensions", ExtensionUtil.OnManagerExtension);
 			register("Restore Extensions", ExtensionUtil.OnLoadExtension);
 			register("Clear Cache", ArduinoManager.sharedManager().clearTempFiles);
+			
+			register("Get more extensions from GitHub...", __onExtensionMenu);
 			//register("Reset Default Program", __onResetDefaultProgram);
 			//register("Set FirmWare Mode", __onResetDefaultProgram);
 			
@@ -484,6 +486,10 @@ package cc.customcode.uibot.ui.parts
 					return;
 				
 				}
+					
+									
+					
+					
 				case "open_help":{
 					
 										
@@ -721,6 +727,25 @@ package cc.customcode.uibot.ui.parts
 		{
 			eBlock.app.extensionManager.onSelectExtension(menuItem.name);
 		}
+		
+		//- for the menu items that aren extensions
+		private function __onExtensionMenu(menuItem:NativeMenuItem):void
+		{
+			var key:String;
+			if(menuItem.data){
+				key = menuItem.data.@action;
+			}else{
+				key = menuItem.name;
+			}
+			
+			if( key== "download_extensions"){
+				
+				navigateToURL(new URLRequest("https://github.com/distintiva/eBlock#extensions"));
+				
+			}
+			
+		}
+		
 		
 		private function __onHelp(menuItem:NativeMenuItem):void
 		{
