@@ -1,18 +1,19 @@
 package cc.customcode.util
 {
+	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.PNGEncoderOptions;
 	import flash.display.Sprite;
 	import flash.display.StageQuality;
-	import flash.display.Bitmap;
 	import flash.events.Event;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
 	import flash.geom.Matrix;
-	import flash.geom.Rectangle;
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	import flash.utils.ByteArray;
+	
 	import assets.Resources;
 	
 	import translation.Translator;
@@ -108,9 +109,10 @@ package cc.customcode.util
 			return argb;
 		}
 		
-		static public function fileSaved(e:Event):void {
-			
-			var fileScreen:File = e.target as File;
+		
+		
+		static private function saveLocalFile( fileScreen:File ):void{
+			//var fileScreen:File = e.target as File;
 			var marco:int = 20;
 			
 			var scale:Number = 1;
@@ -123,7 +125,7 @@ package cc.customcode.util
 			
 			
 			var clip:Rectangle = new Rectangle(0 ,0,spRect.width*scale + marco*scale*2, spRect.height*scale + marco*scale*2);
-				
+			
 			
 			var matrix:Matrix = new Matrix();
 			matrix.scale(scale,scale);
@@ -137,7 +139,7 @@ package cc.customcode.util
 			var logo:Bitmap = Resources.createBmp("eblockLogo");
 			
 			var alphaBitmap:BitmapData = new BitmapData(logo.width, logo.height, true, toARGB(0x000000, (.4 * 255)));  //- imagen Alpha para poder copiar la amnterior con Alpha
-
+			
 			bmd.copyPixels(logo.bitmapData, new Rectangle(0,0,logo.width,logo.height), new Point(bmd.width -logo.width-2 ,bmd.height-logo.height-2) , alphaBitmap, null, true);
 			
 			
@@ -150,19 +152,88 @@ package cc.customcode.util
 			//var fileScreen:File = File.desktopDirectory.resolvePath(path);
 			FileUtil.WriteBytes(fileScreen, jpeg);
 			jpeg.clear();
+		}
+		
+		static public function fileSaved(e:Event):void {
+			
+			saveLocalFile( e.target as File );
 			
 		}	
 		
-		static public function SaveCode(sp:Sprite, rect:Rectangle):void
+		static public function getSpritePNG(spToSave:Sprite, spRect:Rectangle):ByteArray
+		{
+			
+			
+			var marco:int = 20;
+			
+			var scale:Number = 1;
+			var bmd:BitmapData = new BitmapData(
+				spRect.width*scale + marco*scale*2,
+				spRect.height*scale + marco*scale*2 +34,true
+			);
+			
+			
+			
+			
+			var clip:Rectangle = new Rectangle(0 ,0,spRect.width*scale + marco*scale*2, spRect.height*scale + marco*scale*2);
+			
+			
+			var matrix:Matrix = new Matrix();
+			matrix.scale(scale,scale);
+			matrix.translate(0-spRect.x + marco*scale  , 0- spRect.y + marco*scale  );
+			
+			
+			
+			spToSave.scaleX = spToSave.scaleY = scale;
+			bmd.drawWithQuality(spToSave, matrix, null, null, clip, false, StageQuality.BEST);
+			
+			var logo:Bitmap = Resources.createBmp("eblockLogo");
+			
+			var alphaBitmap:BitmapData = new BitmapData(logo.width, logo.height, true, toARGB(0x000000, (.4 * 255)));  //- imagen Alpha para poder copiar la amnterior con Alpha
+			
+			bmd.copyPixels(logo.bitmapData, new Rectangle(0,0,logo.width,logo.height), new Point(bmd.width -logo.width-2 ,bmd.height-logo.height-2) , alphaBitmap, null, true);
+			
+			
+			
+			spToSave.scaleX = spToSave.scaleY = 1;
+			var jpeg:ByteArray = bmd.encode(bmd.rect, new PNGEncoderOptions());
+			bmd.dispose();
+			var now:Date = new Date();
+			var path:String = "screen_"+Math.floor(now.time)+".png";
+			//var fileScreen:File = File.desktopDirectory.resolvePath(path);
+			
+			return jpeg;
+			
+			//jpeg.clear();/
+			
+			
+		
+		}
+		
+		static public function SaveCode(sp:Sprite, rect:Rectangle, saveTempFolder:Boolean = false):void
 		{
 			spToSave = sp;
 			spRect = rect;
 			
 			var defaultName:String = "eblock_export.png";
 			var path:String = fixFileName(defaultName);
-			var file:File= File.desktopDirectory.resolvePath(path);
-			file.addEventListener(Event.SELECT, fileSaved);
-			file.browseForSave(Translator.map("Please choose file location to save PNG image ") );
+			
+			var file:File;
+			
+			if(saveTempFolder){
+				file = File.applicationStorageDirectory.resolvePath("scratchTemp/"+defaultName);
+			
+			   saveLocalFile(file);	
+			
+			}else{
+			   file= File.desktopDirectory.resolvePath(path);
+			   file.addEventListener(Event.SELECT, fileSaved);
+			   file.browseForSave(Translator.map("Please choose file location to save PNG image ") );
+			}
+			
+			
+			
+			
 			
 			return;
 			

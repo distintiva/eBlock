@@ -21,6 +21,9 @@
 		<item name="Hide stage layout" label="隐藏舞台" keyEquivalent="" />
 		<item name="Small stage layout" label="小舞台布局模式" keyEquivalent="" />
 		<item name="Turbo mode" label="加速模式" keyEquivalent="" />
+		<item isSeparator="true" />
+		<item name="Proyect extended data" action="extended_data" />
+		
 		
 	</subMenu>
 	<subMenu name="Connect" label="Connect">

@@ -256,6 +256,9 @@ package cc.customcode.uibot.ui.parts
 				case "arduino_mode":
 					eBlock.app.changeToArduinoMode();
 					break;
+				case "extended_data":
+					eBlock.app.editProjectMeta();
+					break;
 			}
 			//eBlock.app.track("/OpenEdit");
 		}

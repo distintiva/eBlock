@@ -19,7 +19,12 @@ package {
 	import flash.filesystem.File;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import flash.net.URLLoader;
+	import flash.net.URLLoaderDataFormat;
 	import flash.net.URLRequest;
+	import flash.net.URLRequestHeader;
+	import flash.net.URLRequestMethod;
+	import flash.net.URLVariables;
 	import flash.net.navigateToURL;
 	import flash.system.System;
 	import flash.text.TextField;
@@ -29,16 +34,18 @@ package {
 	import flash.utils.ByteArray;
 	import flash.utils.setTimeout;
 	
+	import assets.Resources;
+	
 	import blockly.runtime.Thread;
 	
 	import blocks.Block;
 	
+	import cc.customcode.menu.MenuBuilder;
 	import cc.customcode.uibot.lookandfeel.MyLookAndFeel;
 	import cc.customcode.uibot.ui.parts.TopSystemMenu;
 	import cc.customcode.uibot.uiwidgets.errorreport.ErrorReportFrame;
 	import cc.customcode.uibot.util.AppTitleMgr;
 	import cc.customcode.uibot.util.PopupUtil;
-	import cc.customcode.menu.MenuBuilder;
 	import cc.customcode.updater.AppUpdater;
 	import cc.customcode.util.FileUtil;
 	import cc.customcode.util.FlashSprite;
@@ -90,13 +97,12 @@ package {
 	import uiwidgets.ScriptsPane;
 	
 	import util.ApplicationManager;
+	import util.Base64Encoder;
 	import util.GestureHandler;
 	import util.LogManager;
 	import util.ProjectIO;
 	import util.Server;
 	import util.SharedObjectManager;
-	
-	import assets.Resources;
 	
 	import watchers.ListWatcher;
 
@@ -493,6 +499,82 @@ package {
 			stagePart.setProjectName(s);
 		}
 	
+		
+		
+		
+		
+		
+		public function editProjectMeta():void{
+			
+			function connectNow():void{
+				/*(dialog.fields["IP Address"].text+":"+dialog.fields["Port"].text);*/
+				stagePane.projectTitle = dialog.fields["Title"].text;
+				stagePane.projectDescription = dialog.fields["Description"].text;
+				
+				//eBlock.app.scriptsPane.saveBlocksAsPng(true);
+				
+				//-- upload
+				return;
+				
+				
+				var codePng:ByteArray = eBlock.app.scriptsPane.getBlocksAsPng();
+				
+				if(codePng == null) return;
+				
+				//var sendHeader:URLRequestHeader = new URLRequestHeader("Content-type","application/octet-stream");
+				var sendReq:URLRequest = new URLRequest("http://localhost/academy/share_eblock");
+				
+				var variables:URLVariables = new URLVariables();
+				variables.imagen = Base64Encoder.encode( eBlock.app.scriptsPane.getBlocksAsPng() );
+				variables.title = stagePane.projectTitle;
+				variables.description = stagePane.projectDescription;
+				variables.device = DeviceManager.sharedManager().selectedBoard.id;
+				variables.source = Base64Encoder.encodeString( eBlock.app.scriptsPart.getSourceCode() );
+				variables.eblock_version = vxml.xmlns::versionNumber;
+				
+				//sendReq.requestHeaders.push(sendHeader);
+				sendReq.method = URLRequestMethod.POST;
+				sendReq.data = variables;
+				
+				var sendLoader:URLLoader;
+				sendLoader = new URLLoader();
+				
+				sendLoader.dataFormat = URLLoaderDataFormat.TEXT;
+				sendLoader.addEventListener( Event.COMPLETE,
+					function( e:Event ) : void
+					{
+						// your response data will be here
+						// you'll have to verify the format
+						trace( e.target.data );
+					}
+				)
+					
+				//sendLoader.addEventListener(Event.COMPLETE, imageSentHandler);
+				sendLoader.load(sendReq);
+				
+				return;
+				
+				
+				
+				dialog.cancel();
+			}
+			function cancelNow():void{
+				dialog.cancel();
+			}
+		
+			var dialog:DialogBox = new DialogBox;
+			dialog.allowEnterKey = false;
+			dialog.addTitle(Translator.map("Project Extended Info"));
+			dialog.addField("Title",250, stagePane.projectTitle ,true);
+			dialog.addField("Description",250,stagePane.projectDescription,true, true);
+			dialog.addButton(Translator.map("Cancel"),cancelNow);
+			dialog.addButton(Translator.map("Save"),connectNow);
+			
+			dialog.showOnStage(eBlock.app.stage);
+		
+		}
+		
+		
 		protected var wasEditing:Boolean;
 		public function setPresentationMode(enterPresentation:Boolean):void {
 			if (enterPresentation) {

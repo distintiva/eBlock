@@ -49,6 +49,8 @@ package uiwidgets {
 	
 	import ui.media.MediaInfo;
 	
+	import flash.utils.ByteArray;
+	
 	
 
 public class ScriptsPane extends ScrollFrameContents {
@@ -485,10 +487,24 @@ return true; // xxx disable this check for now; it was causing confusion at Scra
 		}
 	}
 	
-	public function saveBlocksAsPng():void{
+	public function saveBlocksAsPng(saveTempFolder:Boolean = false):void{
 	
 		var codeRect:Rectangle =  minRect();
-			FileUtil.SaveCode(  this ,codeRect ); 
+		
+		if( codeRect.height<0 || codeRect.width<0) return ;
+		
+			FileUtil.SaveCode(  this ,codeRect, saveTempFolder ); 
+	}
+	
+	public function getBlocksAsPng():ByteArray{
+		
+		
+		var codeRect:Rectangle =  minRect();
+		
+		if( codeRect.height<0 || codeRect.width<0) return null;
+		
+		return FileUtil.getSpritePNG(this, codeRect);
+		//FileUtil.SaveCode(  this ,codeRect, saveTempFolder ); 
 	}
 	
 	

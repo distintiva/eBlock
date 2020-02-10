@@ -47,7 +47,10 @@ public class DialogBox extends Sprite {
 	public var widget:DisplayObject;
 	public var w:int, h:int;
 	public var leftJustify:Boolean;
+	
+	public var allowEnterKey:Boolean = true;
 
+	
 	private var title:TextField;
 	protected var buttons:Array = [];
 	private var labelsAndFields:Array = [];
@@ -142,13 +145,24 @@ public class DialogBox extends Sprite {
 		blocks.push(o);
 		addChild(o);
 	}
-	public function addField(fieldName:String, width:int, defaultValue:* = null, showLabel:Boolean = true):void {
+	public function addField(fieldName:String, width:int, defaultValue:* = null, showLabel:Boolean = true, multiline = false):void {
 		var l:TextField = null;
 		if (showLabel) {
 			l = makeLabel(Translator.map(fieldName) + ':');
 			addChild(l);
 		}
 		var f:TextField = makeField(width);
+		
+		
+		if(multiline){
+			f.multiline = true;
+			f.height = 80;
+			
+			this.allowEnterKey = false;
+		}
+		
+		
+				
 		if (defaultValue != null) f.text = defaultValue;
 		addChild(f);
 		fields[fieldName] = f;
@@ -379,6 +393,9 @@ private function getCheckMark(b:Boolean):Sprite{
 			field.x = fieldX;
 			field.y = fieldY + 1;
 			fieldY += heightPerField;
+			
+			//*JC*
+			if(field.multiline) fieldY += field.height-heightPerField +3;
 		}
 		// widget
 		if (widget != null) {
@@ -462,6 +479,9 @@ private function getCheckMark(b:Boolean):Sprite{
 			if (r[0] != null) maxLabelWidth = Math.max(maxLabelWidth, r[0].width);
 			maxFieldWidth = Math.max(maxFieldWidth, r[1].width);
 			h += heightPerField;
+			
+			//*JC*
+			if(r[1].multiline) h += r[1].height-heightPerField +3;
 		}
 		// boolean fields
 		for (i = 0; i < booleanLabelsAndFields.length; i++) {
@@ -558,6 +578,9 @@ private function getCheckMark(b:Boolean):Sprite{
 	private function mouseUp(evt:MouseEvent):void { stopDrag() }
 
 	private function keyDown(evt:KeyboardEvent):void {
+		
+		if(!allowEnterKey) return;
+		
 		if ((evt.keyCode == 10) || (evt.keyCode == 13)) accept();
 	}
 

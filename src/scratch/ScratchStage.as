@@ -87,6 +87,11 @@ public class ScratchStage extends ScratchObj {
 	private var video:Video;
 	private var videoAlpha:Number = 0.5;
 	private var flipVideo:Boolean = true;
+	
+	
+	public var projectTitle:String="";
+	public var projectDescription:String="";
+	
 
 	public function ScratchStage() {
 		objName = 'Stage';
@@ -699,9 +704,10 @@ public class ScratchStage extends ScratchObj {
 
 		if (this == eBlock.app.stagePane) {
 			// If this is the active stage pane, record the current extensions.
-			var extensionsToSave:Array = eBlock.app.extensionManager.extensionsToSave();
+		/*	var extensionsToSave:Array = eBlock.app.extensionManager.extensionsToSave();
 			if (extensionsToSave.length == 0) delete info.savedExtensions;
 			else info.savedExtensions = extensionsToSave;
+			*/
 		}
 	}
 
@@ -803,6 +809,10 @@ public class ScratchStage extends ScratchObj {
 		json.writeKeyValue('videoAlpha', videoAlpha);
 		json.writeKeyValue('children', children);
 		json.writeKeyValue('info', info);
+		
+		//*JC*
+		json.writeKeyValue('title', projectTitle);
+		json.writeKeyValue('description', projectDescription);
 	}
 
 	public override function readJSON(jsonObj:Object):void {
@@ -815,6 +825,9 @@ public class ScratchStage extends ScratchObj {
 		if (jsonObj.videoAlpha) videoAlpha = jsonObj.videoAlpha;
 		children = jsonObj.children;
 		info = jsonObj.info;
+		
+		projectTitle = jsonObj.title;
+		projectDescription = jsonObj.description;
 
 		// instantiate sprites and record their names
 		var spriteNameMap:Object = new Object();
