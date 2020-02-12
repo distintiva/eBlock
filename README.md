@@ -23,6 +23,7 @@ You can use all devices in Online mode ( also BBC micro:bit !)
 - [Devices](#devices)
 - [Extensions](#extensions)
 - [Download](#download)
+- [Contribute](#contribute)
 - [License](#license)
 
 
@@ -166,9 +167,13 @@ Please can contribute to add more devices to the list, you can view current aval
 
 
 ## Extensions
-eBlock has a new extension system but is backward compatble with existing mBlock extensions, tha you can download from:
+eBlock has a new extension system and is backward compatble with existing mBlock extensions, tha you can download from:
 
 [https://www.mblock.cc/extensions/](https://www.mblock.cc/extensions/)
+
+##### How to add extensions
+You can download and existing extension from the above link ad  unzip it under **eBlock/resources/extensions**  direcotry
+
 
 
 Now you can place synchronous calls inside a JavaScript extension functions. For example get a value from your device and make some calculations before submitin to Scratch
@@ -208,11 +213,16 @@ Download the latest eBlock version from:
 
 
 ## References
-- [**mBloc 3.4.5 source** as a base for eBlock - https://github.com/Makeblock-official/mBlock](https://github.com/Makeblock-official/mBlock)
-- [**Arduino List Library** - by Luis Llamas https://github.com/luisllamasbinaburo/Arduino-List](https://github.com/luisllamasbinaburo/Arduino-List)
-- [**RTTTL NonBlocking lib** - forked from https://github.com/end2endzone/NonBlockingRTTTL](https://github.com/end2endzone/NonBlockingRTTTL) 
-- [**Distintiva micro:bit lib** - https://github.com/distintiva/distintiva_microbit_lib](https://github.com/distintiva/distintiva_microbit_lib)
+- [**mBloc 3.4.5 source**](https://github.com/Makeblock-official/mBlock) as a base for eBlock  
+- [**Arduino List Library**](https://github.com/luisllamasbinaburo/Arduino-List) - by Luis Llamas ( @luisllamas )
+- [**RTTTL NonBlocking lib**](https://github.com/end2endzone/NonBlockingRTTTL) - forked from https://github.com/end2endzone/NonBlockingRTTT
+- [**Distintiva micro:bit lib**](https://github.com/distintiva/distintiva_microbit_lib) - use micro:bit with arduino compiler
 
+
+
+## Contribute
+
+If you want to contribute adding more devices, extensions, help to port to Linux or Mac ...  you can contact us at info@distintivasolutions.com
 
 
 
