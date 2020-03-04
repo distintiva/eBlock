@@ -601,6 +601,25 @@ public class ExtensionManager {
 	}
 	
 	
+	public function loadCheckedExtensions():void{
+		var list:Array = [];
+		
+		list = extensionList;
+		
+		for(var i:int=0;i<list.length;i++){
+			var extName:String = list[i].extensionName;
+			
+			//this.unloadRawExtension(list[i]);
+			//onSelectExtension(extName);
+			if(this.checkExtensionSelected(extName)){
+				//this.unloadRawExtension(list[i]);
+				
+				this.loadRawExtension(list[i]);
+			}
+			
+		}
+	}
+	
 	public function loadRawExtension(extObj:Object):void {
 	
 		var ext:ScratchExtension = extensionDict[extObj.extensionName];  //- intento cargarla o la creo null

@@ -296,10 +296,12 @@ package {
 				SharedObjectManager.sharedManager().setObject("first-launch",false);
 				//openWelcome();
 			}
+			
 			initExtension();
 			
 			DeviceManager.sharedManager().LoadBoards();
 			
+			eBlock.app.extensionManager.loadCheckedExtensions(); //*JC*
 			
 			var bytes:ByteArray =  new Specs.contextMenusXML();
 			var xml:XMLList = XMLList( bytes.readUTFBytes( bytes.bytesAvailable ) );
