@@ -24,7 +24,6 @@ You can use all devices in Online mode ( also BBC micro:bit !)
 - [Extensions](#extensions)
 - [Download](#download)
 - [Contribute](#contribute)
-- [License](#license)
 
 
 
@@ -223,8 +222,3 @@ Download the latest eBlock version from:
 ## Contribute
 
 If you want to contribute adding more devices, extensions, help to port to Linux or Mac ...  you can contact us at info@distintivasolutions.com
-
-
-
-### License
-CC BY-NC-SA 4.0

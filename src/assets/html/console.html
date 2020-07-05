@@ -1,0 +1,151 @@
+<html>
+<head>
+
+<style type="text/css">
+
+*
+{
+    margin:0;
+}
+html,body
+{
+    height:100%;
+    width:100%;
+}
+
+div
+{
+   
+    height: 30px;
+   /* display:table-row;*/
+
+}
+
+
+body {
+  
+    background-color: white;
+    color: black;
+
+	font-size:12px;
+}
+
+</style>
+<script type="text/javascript">
+
+
+function appendInfo(info2){
+	var div = document.getElementById("content");
+	var node = div.firstChild;
+/* 	node.appendChild(document.createTextNode(info));
+	if(node.childNodes.length > 200){
+		node.removeChild(node.firstChild);
+	} */
+	var newText = node.innerText+info2;
+	if(newText.length > 2000) {
+	//	newText = newText.substring(newText.length - 1500);
+	}
+	
+	node.innerText = newText;
+	
+	div.scrollTop = div.scrollHeight;
+}
+function clearInfo(){
+	document.getElementById("content").firstChild.innerHTML = "";
+}
+
+function isSendBinaryMode(){
+
+//	return document.getElementById("send_mode").value ==2;
+
+	return document.getElementById("binary_mode").checked;
+}
+function isRecvBinaryMode(){
+	
+	return isSendBinaryMode();
+	//return document.getElementById("recv_binary").checked;
+}
+function onSendEncodeTypeChange(){
+	var ByteArray = runtime.flash.utils.ByteArray;
+	var HexUtil = runtime.cc.makeblock.util.HexUtil;
+	var text = input_data.value;
+	
+	if(text.length <= 0){
+		return;
+	}
+	if(isSendBinaryMode()){
+		var ba = new ByteArray();
+		ba.writeUTFBytes(text);
+		input_data.value = HexUtil.bytesToString(ba);
+	}else{
+		var ba = HexUtil.stringToBytes(text);
+		input_data.value = ba.readUTFBytes(ba.length);
+	} 
+}
+function checkInput(){
+	if(!isSendBinaryMode()){
+		return;
+	}
+	var oldStr = input_data.value;
+	var newStr = oldStr.replace(/[^\s0-9a-fA-F]|/g, "");
+	if(newStr != oldStr){
+		input_data.value = newStr;
+	}
+}
+function updateTranslation(){
+
+ adjustContent();
+
+	var Translator = runtime.translation.Translator;
+	var list = document.getElementsByTagName("input");
+	for(var i=0; i<list.length; ++i){
+		var element = list[i];
+		if(element.type == "button"){
+			element.value = Translator.map(element.name);
+		}
+	}
+	var list = document.getElementsByTagName("label");
+	for(var i=0; i<list.length; ++i){
+		var element = list[i];
+		element.innerText = Translator.map(element.getAttribute("name"));
+	}
+	var list = document.getElementsByTagName("legend");
+	for(var i=0; i<list.length; ++i){
+		var element = list[i];
+		element.innerText = Translator.map(element.getAttribute("name"));
+	}
+}
+
+
+function adjustContent(){
+
+	var avalW = document.documentElement.clientWidth ;
+	var avalH = document.documentElement.clientHeight ;
+
+	var cont = document.getElementById("content");
+	cont.style.height=(avalH-72+"px");
+}
+
+</script>
+</head>
+<body onload="updateTranslation()" onresize="adjustContent()">
+
+	<div style="background-color:#C1DBF9;font-size:12px;height:70px; ">
+		<br><span style="padding:10px;font-size:11px;color:#444444"><input type="radio" value="1" id="text_mode" name="send_mode" onchange="onSendEncodeTypeChange()" checked=checked>&nbsp;Text mode &nbsp;</span><span style="padding:10px;font-size:11px;color:#444444"><input type="radio" id="binary_mode" name="send_mode"  onchange="onSendEncodeTypeChange()" value="2">&nbsp;Binary mode &nbsp;</span><br>
+		<table style="font-size:12px;width:100%">
+			<tr>
+			<td width="100%">
+			
+			<input style="width:100%;border:1px solid #A0B1D2" type="text" id="input_data" onkeyup="checkInput()" />
+			</td><td>
+			<input type="button" name="Send" value="Send" onclick="onSendSerial(input_data.value);" style="padding:0px 5px 0px 5px; font-size=11" />
+			
+			</td></tr>
+		</table>
+	</div>
+	
+	<div id="content" style="position:relative;border:0px solid #ADC7E5;overflow: auto;"><pre style="padding:10px;"></pre></div>
+
+
+</body>
+</html>

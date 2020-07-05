@@ -1,0 +1,248 @@
+<html>
+<head>
+
+<style type="text/css">
+body {
+    
+    background-color: #272822;
+    color: #F8F8F2;
+
+	font-size:14px;
+	
+}
+#top_view {
+	overflow-x:scroll;
+	overflow-y:auto;
+	
+	position:absolute;
+	width:100%;
+	top:0px;
+	/*bottom:290px;*/
+	height:100%;
+}
+
+#code_view{
+	padding-left:10px;
+}
+
+
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+}
+
+#line_number{
+  border-right:1px solid #444444;
+  background:black;  /*272822;*/
+  color:#90906A;
+  padding-right:5px;
+  
+}
+
+</style>
+<script type="text/javascript">
+function _replace(input, index){
+	switch(input){
+		case "<": return "&lt;";
+		case ">": return "&gt;";
+		case "&": return "&amp;";
+	}
+	return null;
+}
+function escapeHtmlChar(input){
+	return input.replace(/[<>&]/g, _replace);
+}
+function renderColor(code){
+	code = replaceColor(code, /"([^\\"]|\\")*"/g, 0xE6DB74);  //strings
+	
+	code = replaceColor(code, /(setup|loop|_loop|_delay)(?=\(\))/g, 0x7FE22A);
+	
+	code = replaceColor(code, /(for|if)(?=\()/g, 0xF92672); //- puede ir al lado de parentesis	
+	code = replaceColor(code, /(else)(?=\{)/g, 0xF92672); //- puede ir al lado de parentesis
+	code = replaceColor(code, /(for|if|else|while|#define|#include|#ifdef|#endif)(?= )/g, 0xF92672);
+	
+	code = replaceColor(code, /true|false/g, 0xAE81FF);
+	//code = replaceColor(code, /(?=^|\s)(void|String|int|uint_8t|const|String|float|char|double|boolean)(?= )/gm, 0x5CD9EF);
+	code = replaceColor(code, /(void|String|int|uint8_t|const|String|float|long|char|double|boolean|Serial|digitalRead|digitalWrite|analogRead|analogWrite)(?= )/g, 0x5CD9EF);
+	code = replaceColor(code /(Serial|digitalRead|digitalWrite|analogRead|analogWrite|pinMode)(?= )/g, 0x5CD9EF);
+	code = replaceColor(code /(PORT|SLOT)_\d/g, 0x996600);
+	
+	
+	
+	return code;
+}
+function replaceColor(code, pattern, color){
+	return code.replace(pattern, '<font color="#' + color.toString(16) + '">$&</font>');
+}
+function setCode(code){
+	// Ahora se formatea desde AS3 en showArduinoCode
+	/*code = code.replace(/^\s+|\s+$/g, "");
+	code = code.replace(/(\t+|\x20+)\n/g, "");
+	code = code.replace(/\n{3,}/g, "\n\n");
+	*/
+	code = escapeHtmlChar(code);
+	code = renderColor(code);
+	document.getElementById("code_view").innerHTML = "<pre id='code_color'  >" + code + "</pre>";
+	var lineList = code.split("\n");
+	var lineCount = lineList.length;
+	var lineText = "";
+	for(var i=0; i<lineCount; ++i){
+		lineText += (i + 1) + "\n";
+	}
+	document.getElementById("line_number").innerHTML = "<pre>" + lineText + "</pre>";
+}
+
+function getCode(code){
+	return document.getElementById("code_view").innerText;
+}
+
+
+
+function updateTranslation(){
+
+ 
+
+	var Translator = runtime.translation.Translator;
+	var list = document.getElementsByTagName("input");
+	for(var i=0; i<list.length; ++i){
+		var element = list[i];
+		if(element.type == "button"){
+			element.value = Translator.map(element.name);
+		}
+	}
+	var list = document.getElementsByTagName("label");
+	for(var i=0; i<list.length; ++i){
+		var element = list[i];
+		element.innerText = Translator.map(element.getAttribute("name"));
+	}
+	var list = document.getElementsByTagName("legend");
+	for(var i=0; i<list.length; ++i){
+		var element = list[i];
+		element.innerText = Translator.map(element.getAttribute("name"));
+	}
+}
+
+
+	function getCaretPos( target ){
+
+          target.focus()
+            var _range = document.getSelection().getRangeAt(0)
+            var range = _range.cloneRange()
+            range.selectNodeContents(target)
+            range.setEnd(_range.endContainer, _range.endOffset)
+            return range.toString().length;
+  	}
+  	function createRange(node, chars, range) {
+    if (!range) {
+        range = document.createRange()
+        range.selectNode(node);
+        range.setStart(node, 0);
+    }
+
+    if (chars.count === 0) {
+        range.setEnd(node, chars.count);
+    } else if (node && chars.count >0) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            if (node.textContent.length < chars.count) {
+                chars.count -= node.textContent.length;
+            } else {
+                 range.setEnd(node, chars.count);
+                 chars.count = 0;
+            }
+        } else {
+            for (var lp = 0; lp < node.childNodes.length; lp++) {
+                range = createRange(node.childNodes[lp], chars, range);
+
+                if (chars.count === 0) {
+                   break;
+                }
+            }
+        }
+   } 
+
+   return range;
+};
+  	
+  	function setCurrentCursorPosition(chars) {
+    if (chars >= 0) {
+        var selection = window.getSelection();
+
+        range = createRange(document.getElementById("code_color").parentNode, { count: chars });
+
+        if (range) {
+            range.collapse(false);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    }
+	};	
+	function colorCode(){
+	
+	var ed = document.getElementById("code_view");
+
+
+
+		var previousPos = getCaretPos ( ed  );
+	//Doing some stuff in the contenteditable div...
+		var code = escapeHtmlChar(ed.innerText);
+	    code = renderColor(code);
+
+		ed.innerHTML = "<pre id='code_color'>" + code + "</pre>";
+
+		renderColor(code);
+
+	
+		//- line numbers
+		var lineList = code.split("\n");
+	var lineCount = lineList.length;
+	var lineText = "";
+	for(var i=0; i<lineCount; ++i){
+		lineText += (i + 1) + "\n";
+	}
+	document.getElementById("line_number").innerHTML = "<pre>" + lineText + "</pre>";
+		
+
+	
+	}
+
+    function replaceKeyDown( newText ){
+     
+            var editor = document.getElementById("code_view");
+	        var doc = editor.ownerDocument.defaultView;
+	        var sel = doc.getSelection();
+	        var range = sel.getRangeAt(0);
+	
+	        var tabNode = document.createTextNode(newText);
+	        range.insertNode(tabNode);
+	
+	        sel.addRange(range);
+    
+    }
+
+	function Test(e){
+       
+		
+
+	
+</script>
+</head>
+<body onload="updateTranslation()">
+<div id="top_view">
+	<table>
+		<tr>
+			<td vAlign="top" align="left">
+				<div id="line_number"></div>
+			</td>
+			<td vAlign="top">
+				<div id="code_view" contentEditable=true onkeyDown="return Test(event);">	
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+
+
+</body>
+</html>

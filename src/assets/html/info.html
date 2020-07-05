@@ -1,0 +1,201 @@
+<html lang="en" >
+<head>
+ <meta charset="UTF-8">
+
+  <title>eBlock Info</title>
+  
+  
+<style>
+  * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color:#666666;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font: 300 12px 'Arial';
+  color: #444;
+  line-height: 1.3em;
+}
+
+.raw-switch {
+  font-size: .9em;
+  color: #444;
+  position: fixed;
+  top: 20px;
+  left: 40px;
+  z-index: 1;
+}
+
+section {
+  padding: 10px 20px;
+}
+
+#out{
+  height: 100%;
+ 
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+section {
+
+}
+section h1 {
+  font-size: 1.8em;
+  padding-top:35px;
+}
+section h2 {
+  padding-top:25px;
+}
+
+section b {
+  font-weight: 700;
+}
+section pre {
+  overflow-y: scroll;
+}
+
+h1, a{
+	color:#007BE7;
+}
+h2, h3, h4{
+	color: #4DADFC;
+}
+
+div.title{
+  background-color: #007BE7;
+  color: white;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.8em;
+}
+
+ul {
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #007BE7; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  font-size: 18px;
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+</style>
+
+<base href='' >
+
+<script type="text/javascript">
+window.console = window.console || function(t) {};
+if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+
+ function setBasePath(path){
+ 	document.getElementsByTagName("base")[0].href = path; 
+ }
+ function setTitle(title){
+  var titleEl = document.getElementById('title');
+  titleEl.innerText = title;
+ }
+ function parseMarkDown(text){
+ 
+	 var outputEl = document.getElementById('output-html');
+	 outputEl["innerHTML"] = parseMd(text);
+} 
+
+</script>
+
+
+
+</head>
+
+<body translate="no" >
+<div id="out">
+<div class="title" id="title">Titulo de la ayuda</div>
+<section id="output-html"></section>
+</div>
+   
+  
+      <script id="rendered-js" >
+      function parseMd(md) {
+
+  //ul
+  md = md.replace(/^\s*\n\*/gm, '<ul>\n*');
+  md = md.replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2');
+  md = md.replace(/^\*(.+)/gm, '<li>$1</li>');
+
+  //ol
+  md = md.replace(/^\s*\n\d\./gm, '<ol>\n1.');
+  md = md.replace(/^(\d\..+)\s*\n([^\d\.])/gm, '$1\n</ol>\n\n$2');
+  md = md.replace(/^\d\.(.+)/gm, '<li>$1</li>');
+
+  //blockquote
+  md = md.replace(/^\>(.+)/gm, '<blockquote>$1</blockquote>');
+
+  //h
+  md = md.replace(/[\#]{6}(.+)/g, '<h6>$1</h6>');
+  md = md.replace(/[\#]{5}(.+)/g, '<h5>$1</h5>');
+  md = md.replace(/[\#]{4}(.+)/g, '<h4>$1</h4>');
+  md = md.replace(/[\#]{3}(.+)/g, '<h3>$1</h3>');
+  md = md.replace(/[\#]{2}(.+)/g, '<h2>$1</h2>');
+  md = md.replace(/[\#]{1}(.+)/g, '<h1>$1</h1>');
+
+  //alt h
+  md = md.replace(/^(.+)\n\=+/gm, '<h1>$1</h1>');
+  md = md.replace(/^(.+)\n\-+/gm, '<h2>$1</h2>');
+
+  //images
+  md = md.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />');
+
+  //links
+  md = md.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>');
+
+  //font styles
+  md = md.replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, '<b>$1</b>');
+  md = md.replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, '<i>$1</i>');
+  md = md.replace(/[\~]{2}([^\~]+)[\~]{2}/g, '<del>$1</del>');
+
+  //pre
+  md = md.replace(/^\s*\n\`\`\`(([^\s]+))?/gm, '<pre class="$2">');
+  md = md.replace(/^\`\`\`\s*\n/gm, '</pre>\n\n');
+
+  //code
+  md = md.replace(/[\`]{1}([^\`]+)[\`]{1}/g, '<code>$1</code>');
+
+  //p
+  md = md.replace(/^\s*(\n)?(.+)/gm, function (m) {
+    return /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img)/.test(m) ? m : '<p>' + m + '</p>';
+  });
+
+  //strip p from pre
+  md = md.replace(/(\<pre.+\>)\s*\n\<p\>(.+)\<\/p\>/gm, '$1$2');
+
+  return md;
+
+}
+
+
+
+
+
+
+parseMarkDown("##hola #adios");
+
+</script>
+
+  
+  
+
+</body>
+
+</html>
