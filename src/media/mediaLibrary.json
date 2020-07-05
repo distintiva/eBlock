@@ -1,0 +1,52 @@
+[
+
+{"name": "M-Dog", "md5": "mdog.json", "type": "sprite", "tags": ["animals", "drawing", "fantasy", "vector"], "info": [0, 1, 1]},
+
+{"name": "Bat1", "md5": "a85170f73f7bf9a599e176b830d2315e.json", "type": "sprite", "tags": ["animals", "drawing", "flying", "vector"], "info": [0, 2, 1]}, 
+{"name": "bat1-a ", "md5": "7ad915f8e0884f497a24d5bb61ea8a4a.svg", "type": "costume", "tags": ["animals", "drawing", "flying", "vector"], "info": [150, 150]},
+{"name": "bat1-b ", "md5": "f127434672b872a902346ef3c1af45f2.svg", "type": "costume", "tags": ["animals", "drawing", "flying", "vector"], "info": [150, 150]},
+
+{"name": "Bat2", "md5": "b6e16d40ec9f8da3a992fd187af45f58.json", "type": "sprite", "tags": ["animals", "drawing", "flying", "vector"], "info": [0, 2, 1]},
+{"name": "bat2-a ", "md5": "647d4bd53163f94a7dabf623ccab7fd3.svg", "type": "costume", "tags": ["animals", "drawing", "flying", "vector", "vector"], "info": [150, 150]},
+{"name": "bat2-b ", "md5": "8aa1d20e4f7761becbe9bafa75290465.svg", "type": "costume", "tags": ["animals", "drawing", "flying"], "info": [150, 150]},
+
+{"name": "Boy1", "md5": "dee4026d514754703d3eb240bb89de11.json", "type": "sprite", "tags": ["people", "city", "drawing", "vector"], "info": [0, 4, 1]},
+{"name": "boy1-a", "md5": "b1897e56265470b55fa65fabe2423c55.svg", "type": "costume", "tags": ["people", "city", "drawing", "vector"], "info": [89, 191]},
+{"name": "boy1-b", "md5": "873fbd641768c8f753a6568da97633e7.svg", "type": "costume", "tags": ["people", "city", "drawing", "vector"], "info": [72, 191]},
+{"name": "boy1-c", "md5": "eac3c03d86cebb42c8f30e373cb7f623.svg", "type": "costume", "tags": ["people", "city", "drawing", "vector"], "info": [64, 191]},
+{"name": "boy1-d", "md5": "fa6a75afb0e4b822b91d8bb20d40c68f.svg", "type": "costume", "tags": ["people", "city", "drawing", "vector"], "info": [76, 190]},
+
+{"name": "Dog1", "md5": "3935515695275dd31a51d16a1a899771.json", "type": "sprite", "tags": ["animals", "drawing", "walking","vector"], "info": [0, 2, 1]},
+{"name": "dog1-a", "md5": "39ddefa0cc58f3b1b06474d63d81ef56.svg", "type": "costume", "tags": ["animals", "drawing", "walking", "vector"], "info": [154, 89]},
+{"name": "dog1-b", "md5": "598f4aa3d8f671375d1d2b3acf753416.svg", "type": "costume", "tags": ["animals", "drawing", "walking", "vector"], "info": [154, 89]},
+
+{"name": "Fish3", "md5": "32e13f0417ae9c2cf52212299c37e545.json", "type": "sprite", "tags": ["animals", "drawing", "underwater","vector"], "info": [0, 1, 1]},
+
+{"name": "Girl1", "md5": "92ec656ecf76654dbcd8a25c29d8ace6.json", "type": "sprite", "tags": ["people", "city", "drawing", "vector"], "info": [0, 4, 1]},
+{"name": "girl1-a", "md5": "afab2d2141e9811bd89e385e9628cb5f.svg", "type": "costume", "tags": ["people", "city", "drawing", "vector"], "info": [63, 200]},
+{"name": "girl1-b", "md5": "1e0116c7c2e5e80c679d0b33f1f5cfb7.svg", "type": "costume", "tags": ["people", "city", "drawing", "vector"], "info": [64, 202]},
+{"name": "girl1-c", "md5": "b6e23922f23b49ddc6f62f675e77417c.svg", "type": "costume", "tags": ["people", "city", "drawing", "vector"], "info": [65, 201]},
+{"name": "girl1-d", "md5": "a65f99a152a9daa19add7987163d7b74.svg", "type": "costume", "tags": ["people", "city", "drawing", "vector"], "info": [63, 200]},
+
+{"name": "Arrow1", "md5": "351dd27c47a05ba828689922751e4e9f.json", "type": "sprite", "tags": ["things", "drawing", "vector"], "info": [0, 4, 1]},
+{"name": "arrow1-a", "md5": "fe5a9881cd6b122683c173e45527f4bc.svg", "type": "costume", "tags": ["things", "drawing", "vector"], "info": [57, 47]},
+{"name": "arrow1-b", "md5": "c570fdbde334b1176afa1811a22cc87d.svg", "type": "costume", "tags": ["things", "drawing", "vector"], "info": [57, 47]},
+{"name": "arrow1-c", "md5": "b3dc0daa531803069efebc471351160c.svg", "type": "costume", "tags": ["things", "drawing", "vector"], "info": [47, 57]},
+{"name": "arrow1-d", "md5": "b4b22d510e916a6e9c1f9d6b9cd2ca6e.svg", "type": "costume", "tags": ["things", "drawing", "vector"], "info": [47, 57]},
+
+{"name": "soccer ball", "md5": "4e4cc84380ccf6d4e59e53bc6d3a0a3f.svg", "type": "costume", "tags": ["things", "sports", "drawing", "vector"], "info": [116, 114]},
+
+{"name": "Spaceship", "md5": "cc0ceb624bbf791f5e727197493b2962.json", "type": "sprite", "tags": ["transportation", "space", "fantasy", "flying", "drawing", "vector"], "info": [0, 2, 1]},
+{"name": "spaceship-a", "md5": "028b6d5210a4a94d5cd3d2001fd3d74d.svg", "type": "costume", "tags": ["transportation", "things", "space", "fantasy", "drawing", "vector"], "info": [112, 184]},
+{"name": "spaceship-b", "md5": "55e3d48245934393402ab214c122ed8f.svg", "type": "costume", "tags": ["transportation", "things", "space", "fantasy", "drawing", "vector"], "info": [115, 175]},
+
+{"name":"bedroom2","md5":"181916364097d7e7e24a761534a64a48.gif","type":"backdrop","tags":["indoors"],"info":[]},
+
+{"name":"space","md5":"b579aeeb143e79c47e2e65cbd3c0fe36.svg","type":"backdrop","tags":["space"],"info":[]}
+
+
+
+
+
+
+]
